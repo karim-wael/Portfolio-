@@ -64,6 +64,35 @@ export default function RootLayout({
           src={process.env.UMAMI_DOMAIN}
           data-website-id={process.env.UMAMI_SITE_ID}
         ></Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Karim Wael",
+              "url": "https://karim-wael.vercel.app",
+              "jobTitle": "AI Engineer & Cybersecurity Systems Builder",
+              "alumniOf": "Misr International University (MIU)",
+              "sameAs": [
+                "https://github.com/karimcpp110",
+                "https://www.linkedin.com/in/karim-wael-40132b360/",
+                "https://www.instagram.com/kimo.cpp/"
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Karim Wael Portfolio",
+              "url": "https://karim-wael.vercel.app"
+            })
+          }}
+        />
         {/* <Analytics /> */}
       </head>
       <body>

@@ -1,0 +1,27 @@
+---
+title: "Local AI Agents: Designing Secure Offline RAG Architectures"
+publishedAt: "2026-04-05"
+summary: "How to construct a fully offline Retrieval-Augmented Generation pipeline using Ollama and FAISS without exposing codebase tokens."
+author: "Karim Wael"
+tags: ["ai-agents", "rag", "security"]
+---
+
+# Local AI Agents: Designing Secure Offline RAG Architectures
+
+Enterprise software houses often avoid third-party LLM integrations due to codebase privacy rules. Passing entire files through public cloud interfaces poses severe security risks. Building local, offline AI agents solves this problem.
+
+## System Architecture
+
+Our off-grid agent runtime, **Chiggabot**, relies on a private retrieval loop running entirely on local CPU/GPU hardware:
+
+```
+[User Query] -> [MiniLM Embeddings] -> [Vector Index (FAISS)] -> [Ollama Local LLM] -> [Output]
+```
+
+1. **Local Embeddings**: Incoming codebase chunks are parsed and vectorized using lightweight sentence transformers.
+2. **Offline Vector Search**: Similarity lookups query local vector stores (Chroma/FAISS) to fetch relevant code context.
+3. **Local LLM Inference**: Context is injected into Ollama-hosted models (e.g., Llama3, Mistral) to synthesize responses securely.
+
+## Execution Isolation
+
+A major feature of Chiggabot is its local script executor. To prevent prompt injection exploits from running arbitrary system shell commands, the runtime parses model suggestions and forwards execution logic to isolated Docker containers. Networking is explicitly disabled on these sandbox runtimes, preventing credentials exfiltration.

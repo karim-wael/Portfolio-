@@ -1,0 +1,23 @@
+---
+title: "NASA Space Apps: Weather Risk Modeling with ProbCast"
+publishedAt: "2024-10-15"
+summary: "Reflecting on leading Team Moon Walkers, parsing earth observation telemetry, and building Streamlit dashboards under a 48-hour deadline."
+author: "Karim Wael"
+tags: ["nasa", "data-science", "leadership"]
+---
+
+# NASA Space Apps: Weather Risk Modeling with ProbCast
+
+Participating in the NASA Space Apps Challenge demands rapid engineering decisions and coordinated team management. As the Technical Lead for Team *Moon Walkers*, my goal was to transform satellite-derived Earth telemetry datasets into actionable environmental alerts for event planners.
+
+## Data Pipelines & Telemetry
+
+The platform, **ProbCast**, queries geographic coordinates using the **NASA POWER API** (Prediction Of Worldwide Energy Resources). We designed a processing pipeline in Python to digest historical meteorology datasets:
+
+- **Telemetry Ingestion**: Real-time querying fetches wind speed, surface humidity, precipitation levels, and solar radiation coordinates.
+- **Statistical Modeling**: We implemented simple probabilistic rainfall thresholds using scientific python models.
+- **Streamlit Frontend**: Rendered maps (using Folium) and interactive widgets enabled event organizers to immediately audit hazard exposure scores.
+
+## Technical Leadership Under Pressure
+
+In a hackathon setting, prioritizing delivery speed over architectural over-engineering is key. By managing workflow tasks between our data parsing team and frontend designers, we deployed a completely operational dashboard to public cloud endpoints within 48 hours, highlighting the value of focused, agile technical leadership.

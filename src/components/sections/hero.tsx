@@ -33,11 +33,22 @@ const HeroSection = () => {
         >
           {!isLoading && (
             <div className="flex flex-col">
+              {/* Availability Status Badge */}
+              <BlurIn delay={0.5}>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono mb-4 w-fit">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  Available for AI & Systems Engineering Roles
+                </div>
+              </BlurIn>
+
               <div>
                 <BlurIn delay={0.7}>
                   <p
                     className={cn(
-                      "md:self-start mt-4 font-thin text-md text-slate-500 dark:text-zinc-400",
+                      "md:self-start mt-2 font-thin text-md text-slate-500 dark:text-zinc-400",
                       "cursor-default font-display sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
                     )}
                   >
@@ -78,13 +89,25 @@ const HeroSection = () => {
                       "bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-500"
                     )}
                   >
-                    Building Intelligent Systems & Real-Time Infrastructure
+                    AI Engineer | Cybersecurity | Software Systems
                   </p>
                   <p className="md:self-start mt-2 text-sm md:text-base text-muted-foreground max-w-lg">
-                    I design and engineer scalable systems across AI, cybersecurity, and high-performance applications.
+                    Building secure intelligent systems through AI, cybersecurity, and scalable software architecture.
                   </p>
                 </BlurIn>
               </div>
+
+              {/* Floating interactive hint */}
+              <BlurIn delay={1.4}>
+                <div className="mt-4 flex items-center gap-2 text-xs font-mono text-zinc-400">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                  </span>
+                  <span>Explore my stack (Hover / press keyboard keys)</span>
+                </div>
+              </BlurIn>
+
               <div className="mt-8 flex flex-col gap-3 w-fit">
                 <Magnetic>
                   <Link
@@ -101,7 +124,7 @@ const HeroSection = () => {
                   </Link>
                 </Magnetic>
                 <div className="md:self-start flex flex-wrap gap-3">
-                  <Link href={"#projects"}>
+                  <Link href={"#selected-work"}>
                     <Button
                       variant={"default"}
                       className="w-full md:w-auto px-8"

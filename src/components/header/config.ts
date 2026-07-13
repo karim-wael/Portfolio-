@@ -6,25 +6,25 @@ const links: Link[] = [
     href: '/',
   },
   {
-    title: 'About',
-    href: '/#about',
-  },
-  {
-    title: 'Skills',
-    href: '/#skills',
-  },
-  {
     title: 'Projects',
     href: '/#projects',
   },
-  // {
-  //   title: 'Skills',
-  //   href: '/skills',
-  // },
-  // {
-  //   title: 'Testimonials',
-  //   href: '/testimonials',
-  // },
+  {
+    title: 'Leadership',
+    href: '/#leadership',
+  },
+  {
+    title: 'Philosophy',
+    href: '/#engineering-philosophy',
+  },
+  {
+    title: 'Tech Stack',
+    href: '/#skills',
+  },
+  {
+    title: 'Certifications',
+    href: '/#certifications',
+  },
   {
     title: 'Blogs',
     href: '/blogs',

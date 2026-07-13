@@ -208,14 +208,112 @@ export type Project = {
   shortDescription?: string;
   approach?: string;
   architectureDesc?: string;
+  implementationDesc?: string;
+  securityConsiderations?: string;
   features?: string[];
   impact?: string;
 };
 
 const projects: Project[] = [
   {
+    id: "soc-ai",
+    category: "AI + Cybersecurity",
+    title: "SOC AI Omega",
+    src: "/assets/projects-screenshots/soc-ai/landing.png",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.framerMotion,
+      ],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.flask,
+        PROJECT_SKILLS.docker,
+      ],
+    },
+    live: "",
+    github: "https://github.com/karimcpp110/SOC_ANALYSIS_AI",
+    shortDescription: "AI-assisted SOC monitoring platform achieving 99% threat detection accuracy.",
+    problem: "Traditional Security Operations Center (SOC) workflows suffer from manual threat analysis overload, leading to high triage times and critical detection delays.",
+    architectureDesc: "Packet Monitoring -> ML Classification -> Threat Scoring -> Wazuh Integration -> MITRE ATT&CK Mapping.",
+    implementationDesc: "Designed and implemented a modular classification pipeline utilizing a Scikit-Learn Random Forest model. Telemetry alerts parse dynamically through Sigma Rules and map directly to appropriate MITRE ATT&CK tactics inside a FastAPI backend. Configured automatic Dockerized containment triggers upon high-criticality alert thresholds.",
+    securityConsiderations: "Enforced off-grid local deployment to protect sensitive corporate telemetry from cloud-based leaks. Constructed strict packet signature validation checks on all incoming sniffed packets to prevent buffer overflow attacks on the parsing engine.",
+    impact: "Transformed passive security monitoring into an active containment ecosystem, reducing response latency with 99.2% classification accuracy.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            AI-Powered Threat Detection & Autonomous Remediation
+          </TypographyP>
+          <TypographyP className="font-mono">
+            A real-time Security Operations Center dashboard with AI-driven
+            threat analysis, automated incident response, and a Hyper-Drive
+            autonomous workflow engine. Integrates scikit-learn ML models for
+            anomaly detection and features a premium glassmorphism HUD interface.
+          </TypographyP>
+          <ProjectsLinks repo={this.github} />
+          <TypographyH3 className="my-4 mt-8">Features</TypographyH3>
+          <ul className="list-disc ml-6">
+            <li className="font-mono">Real-time threat feed with ML-based severity scoring</li>
+            <li className="font-mono">Autonomous &quot;Hyper-Drive&quot; mode for zero-touch remediation</li>
+            <li className="font-mono">Interactive network topology visualization</li>
+            <li className="font-mono">Incident timeline with automated forensics reports</li>
+          </ul>
+        </div>
+      );
+    },
+  },
+  {
+    id: "chiggabot",
+    category: "Local AI Agents",
+    title: "Chiggabot",
+    src: "/assets/projects-screenshots/chiggabot/landing.png",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.js],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.flask,
+        PROJECT_SKILLS.docker,
+      ],
+    },
+    live: "",
+    shortDescription: "Fully local AI agent with RAG, code execution, and multi-language runtime.",
+    problem: "Integrating cloud-based LLM APIs compromises codebase privacy, creates recursive API subscription bills, and increases single-point failure dependencies.",
+    architectureDesc: "User Query -> Embedding Model -> Vector Database -> Local LLM -> Response Generation & Execution Sandbox.",
+    implementationDesc: "Built an entirely local agent engine powered by Ollama local models. Configured a custom Retrieval-Augmented Generation (RAG) pipeline leveraging FAISS and Chroma vector stores for codebase scanning. Added local text-to-speech voice synthesis and a secure execution sandbox using Docker containers.",
+    securityConsiderations: "Script evaluation occurs in an isolated Docker runtime environment with capped resources and blocked networking, preventing malicious code from accessing the host OS filesystem or local network.",
+    impact: "Created a private, zero-subscription development assistant completely independent of internet access or third-party servers.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Zero Subscriptions. Full Intelligence. Local Hardware.
+          </TypographyP>
+          <TypographyP className="font-mono">
+            Chiggabot is a high-performance, subscription-free AI agent running
+            entirely on local hardware. Powered by Ollama with real-time web
+            access via RAG, it features an unfiltered personality, text-to-speech
+            capabilities, and a custom knowledge pipeline. No cloud dependency,
+            no API costs, no limits.
+          </TypographyP>
+          <ProjectsLinks />
+          <TypographyH3 className="my-4 mt-8">Capabilities</TypographyH3>
+          <ul className="list-disc ml-6">
+            <li className="font-mono">Local LLM inference via Ollama — zero subscription cost</li>
+            <li className="font-mono">Real-time web search and RAG knowledge augmentation</li>
+            <li className="font-mono">Text-to-speech with personality-driven voice synthesis</li>
+            <li className="font-mono">Custom prompt engineering for unfiltered responses</li>
+          </ul>
+        </div>
+      );
+    },
+  },
+  {
     id: "talky",
-    category: "Real-Time Systems",
+    category: "Distributed Systems",
     title: "TALKY",
     src: "/assets/projects-screenshots/talky/landing.png",
     screenshots: ["landing.png"],
@@ -234,19 +332,12 @@ const projects: Project[] = [
       ],
     },
     live: "",
-    // github: "https://github.com/karimcpp110/whatsdown",
     shortDescription: "High-performance messaging system built with React + C++ and WebSocket architecture.",
-    problem: "Real-time messaging often suffers from latency, poor security, and scaling bottlenecks in custom implementations. Connecting C++ raw performance with modern web UIs is notoriously difficult.",
-    solution: "Built a hybrid C++ backend with Socket.io for sub-millisecond routing and end-to-end encryption.",
-    approach: "Instead of relying on standard NodeJS for everything, I deployed a C++ server strictly for WebSocket routing to guarantee sub-millisecond latency. I bridged this high-performance core to a premium React frontend using Socket.io to maintain a modern, smooth UX without sacrificing backend speed.",
-    architectureDesc: "A modular microservices approach utilizing Docker. The core messaging engine runs on C++ while Node handles standard HTTP requests and REST authentication. State synchronization is managed real-time on the React frontend.",
-    features: [
-      "Sub-millisecond message routing via C++ WebSocket server",
-      "End-to-end encryption with custom protocol",
-      "Real-time state synchronization (typing, read receipts)",
-      "Dockerized microservice deployment"
-    ],
-    impact: "Created a scalable, enterprise-grade messaging prototype capable of handling high concurrency with zero perceived latency on the frontend.",
+    problem: "Real-time communication platforms require low-latency packet routing, high concurrency handling, and strict user privacy configurations.",
+    architectureDesc: "Client -> Node.js Authentication Layer -> Socket.io Bridge -> C++ WebSocket Server -> Thread Pool Processing.",
+    implementationDesc: "Designed a hybrid backend routing high-throughput binary messages via a C++ WebSocket server using custom thread pools and a non-blocking event loops, while routing standard REST login requests through a Node.js Express server.",
+    securityConsiderations: "Implemented a custom key-exchange protocol ensuring end-to-end encryption. Built structural bounds checks on incoming binary websocket packets to prevent buffer overflow attacks in the C++ layer.",
+    impact: "Delivered sub-millisecond packet transmission infrastructure capable of handling concurrent client nodes with absolute privacy.",
     get content() {
       return (
         <div>
@@ -280,104 +371,42 @@ const projects: Project[] = [
     },
   },
   {
-    id: "chiggabot",
-    category: "AI Infrastructure",
-    title: "Chiggabot",
-    src: "/assets/projects-screenshots/chiggabot/landing.png",
+    id: "ieee-portal",
+    category: "Systems Engineering",
+    title: "IEEE MIU Portal",
+    src: "/assets/projects-screenshots/ieee-portal/landing.png",
     screenshots: ["landing.png"],
     skills: {
-      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.js],
-      backend: [
-        PROJECT_SKILLS.python,
-        PROJECT_SKILLS.flask,
-        PROJECT_SKILLS.docker,
-      ],
+      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.js, PROJECT_SKILLS.tailwind],
+      backend: [PROJECT_SKILLS.php, PROJECT_SKILLS.mysql],
     },
     live: "",
-    shortDescription: "Fully local AI agent with RAG, code execution, and multi-language runtime.",
-    problem: "Cloud-based AI limits data privacy, requires expensive API subscriptions, and creates dangerous dependencies for enterprise codebase execution.",
-    solution: "Developed a 100% local, subscription-free AI agent powered by Ollama and RAG, avoiding all external API constraints.",
-    approach: "I wanted complete control over the AI environment. By deploying Ollama locally and writing a custom Python/Flask pipeline, I created a secure enclave where the model can execute code, fetch data, and perform RAG without any internet boundary issues.",
-    architectureDesc: "The core engine runs Python scripts evaluating LLM output via local Ollama wrappers. A React frontend communicates seamlessly with the local Flask server serving the RAG-augmented responses.",
-    features: [
-      "Local LLM inference via Ollama (Zero cost, infinite privacy)",
-      "Real-time web search integration via custom scraping pipeline",
-      "Unfiltered, personality-driven custom prompt engineering",
-      "Local code execution runtime for isolated script testing"
-    ],
-    impact: "Built a fully autonomous, cost-free intelligence tool that completely removes reliance on OpenAI and external constraints.",
+    github: "https://github.com/karimcpp110/ieee-miu",
+    shortDescription: "Rebuilt a university platform through reverse-engineered architecture and automation.",
+    problem: "Student organizations lack integration options with restrictive university software systems, forcing manual data updates and Excel chaos.",
+    architectureDesc: "Client Browser Requests -> Custom PHP MVC Controller -> Reverse Engineered MIU Endpoint Authentication -> Secure MySQL DB Synchronization.",
+    implementationDesc: "Reverse-engineered university portal network calls to automate verification routines for 100+ members. Rebuilt a custom PHP MVC-lite learning management dashboard to bypass legacy administration blocks.",
+    securityConsiderations: "Secured user credentials by implementing single-session tokens that are never cached on the local disk. Configured parameterized MySQL query bindings to prevent SQL injections.",
+    impact: "Centralized all branch operations into a single platform currently supporting and tracking the lifecycle of over 100 active members efficiently.",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Zero Subscriptions. Full Intelligence. Local Hardware.
+            A Complete University Portal — Reverse-Engineered & Rebuilt
           </TypographyP>
           <TypographyP className="font-mono">
-            Chiggabot is a high-performance, subscription-free AI agent running
-            entirely on local hardware. Powered by Ollama with real-time web
-            access via RAG, it features an unfiltered personality, text-to-speech
-            capabilities, and a custom knowledge pipeline. No cloud dependency,
-            no API costs, no limits.
-          </TypographyP>
-          <ProjectsLinks />
-          <TypographyH3 className="my-4 mt-8">Capabilities</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">Local LLM inference via Ollama — zero subscription cost</li>
-            <li className="font-mono">Real-time web search and RAG knowledge augmentation</li>
-            <li className="font-mono">Text-to-speech with personality-driven voice synthesis</li>
-            <li className="font-mono">Custom prompt engineering for unfiltered responses</li>
-          </ul>
-        </div>
-      );
-    },
-  },
-  {
-    id: "soc-ai",
-    category: "Cybersecurity",
-    title: "SOC AI Command Center",
-    src: "/assets/projects-screenshots/soc-ai/landing.png",
-    screenshots: ["landing.png"],
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.framerMotion,
-      ],
-      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.flask, PROJECT_SKILLS.docker],
-    },
-    live: "",
-    github: "https://github.com/karimcpp110/SOC_ANALYSIS_AI",
-    shortDescription: "ML-powered SOC platform achieving 99% threat detection accuracy.",
-    problem: "Security analysts are overwhelmed by high volumes of raw telemetry, leading to devastating response delays and manual triage fatigue.",
-    solution: "Engineered an AI HUD with autonomous remediation that classifies threats and responds in real-time.",
-    approach: "I applied an engineering mindset to defense operations by leveraging Machine Learning directly on packet telemetry. Instead of just visualizing attacks, the system actively uses Random Forest models to intercept, classify, and isolate threats autonomously.",
-    architectureDesc: "Raw data feeds are continuously parsed and scored by a Python-based ML layer. Findings trigger autonomous containment protocols simulated via Docker, while the React/Tailwind HUD updates live state via WebSockets.",
-    features: [
-      "99% classification accuracy using Scikit-Learn Random Forest models",
-      "Autonomous 'Hyper-Drive' mode for zero-touch threat remediation",
-      "Real-time geographical tracking and network topology rendering",
-      "Automated incident forensics reporting"
-    ],
-    impact: "Transformed passive security monitoring into an active containment ecosystem, drastically reducing assumed mean-time-to-respond (MTTR).",
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono text-2xl text-center">
-            AI-Powered Threat Detection & Autonomous Remediation
-          </TypographyP>
-          <TypographyP className="font-mono">
-            A real-time Security Operations Center dashboard with AI-driven
-            threat analysis, automated incident response, and a Hyper-Drive
-            autonomous workflow engine. Integrates scikit-learn ML models for
-            anomaly detection and features a premium glassmorphism HUD interface.
+            Built from scratch after reverse-engineering the Misr International
+            University&apos;s official portal. Features a Learning Management
+            System, automated grading pipeline, event management, and
+            member dashboards. Serves the entire IEEE MIU student branch.
           </TypographyP>
           <ProjectsLinks repo={this.github} />
           <TypographyH3 className="my-4 mt-8">Features</TypographyH3>
           <ul className="list-disc ml-6">
-            <li className="font-mono">Real-time threat feed with ML-based severity scoring</li>
-            <li className="font-mono">Autonomous &quot;Hyper-Drive&quot; mode for zero-touch remediation</li>
-            <li className="font-mono">Interactive network topology visualization</li>
-            <li className="font-mono">Incident timeline with automated forensics reports</li>
+            <li className="font-mono">Full LMS with course management and automated grading</li>
+            <li className="font-mono">Member dashboard with event registration and tracking</li>
+            <li className="font-mono">Admin panel with analytics and content management</li>
+            <li className="font-mono">Responsive design serving 100+ active members</li>
           </ul>
         </div>
       );
@@ -415,54 +444,6 @@ const projects: Project[] = [
             <li className="font-mono">NASA POWER API integration for Earth observation data</li>
             <li className="font-mono">Probabilistic rainfall modeling with Python scientific stack</li>
             <li className="font-mono">Geospatial coordinate-based querying system</li>
-          </ul>
-        </div>
-      );
-    },
-  },
-  {
-    id: "ieee-portal",
-    category: "Full-Stack Systems",
-    title: "IEEE MIU Portal",
-    src: "/assets/projects-screenshots/ieee-portal/landing.png",
-    screenshots: ["landing.png"],
-    skills: {
-      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.js, PROJECT_SKILLS.tailwind],
-      backend: [PROJECT_SKILLS.php, PROJECT_SKILLS.mysql],
-    },
-    live: "",
-    github: "https://github.com/karimcpp110/ieee-miu",
-    shortDescription: "Rebuilt a university platform through reverse-engineered architecture and automation.",
-    problem: "IEEE MIU branch operations were bottlenecked by manual grading, fragmented data across Excel sheets, and low member engagement. The official university portal was overly restrictive.",
-    solution: "Automated grading and management for 100+ users, centralizing all branch operations in a familiar UI.",
-    approach: "I reverse-engineered the authentication flow and UI/UX of the existing university system to ensure zero learning curve. I selected a custom PHP MVC-lite architecture to keep deployment inexpensive, fast, and highly reliable on minimal hardware.",
-    architectureDesc: "A monolithic but clean PHP MVC backend handling SQL transactions mapped natively to a Vanilla CSS + JS frontend, ensuring rapid page loads and high compatibility.",
-    features: [
-      "Full LMS with course management and automated grading workflows",
-      "Role-based Access Control (RBAC) covering 100+ active members",
-      "Real-time analytics and attendance tracking via admin dashboard",
-      "Seamless UI replication of the official MIU environment"
-    ],
-    impact: "Centralized all branch operations into a single platform currently supporting and tracking the lifecycle of over 100 active members efficiently.",
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono text-2xl text-center">
-            A Complete University Portal — Reverse-Engineered & Rebuilt
-          </TypographyP>
-          <TypographyP className="font-mono">
-            Built from scratch after reverse-engineering the Misr International
-            University&apos;s official portal. Features a Learning Management
-            System, automated grading pipeline, event management, and
-            member dashboards. Serves the entire IEEE MIU student branch.
-          </TypographyP>
-          <ProjectsLinks repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Features</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">Full LMS with course management and automated grading</li>
-            <li className="font-mono">Member dashboard with event registration and tracking</li>
-            <li className="font-mono">Admin panel with analytics and content management</li>
-            <li className="font-mono">Responsive design serving 100+ active members</li>
           </ul>
         </div>
       );
@@ -625,9 +606,6 @@ const projects: Project[] = [
             Thank you again to everyone who contributed to making SmartGen Championship 2026 such a memorable and impactful experience.
             <br/><br/>
             Together, you set a great example of teamwork, mentorship, dedication, leadership, and excellence. 🌟
-          </TypographyP>
-          <TypographyP className="font-mono text-sm opacity-70 mt-8 mb-4">
-            #SmartGen2026 #Leadership #Robotics #AI #Teamwork #TeachingAssistants #ParticipationManagement #IEEE #MIU #Innovation #HighSchoolStudents #StudentActivities #SchoolTours #ComputerScience #Education #Mentorship #Technology #Gratitude
           </TypographyP>
         </div>
       );

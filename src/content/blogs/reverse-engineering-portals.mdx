@@ -1,0 +1,23 @@
+---
+title: "Reverse Engineering Legacy Portals: Rebuilding Restricted APIs"
+publishedAt: "2025-11-20"
+summary: "How I decompiled authentication calls of my university portal to automate student grading workflows for the IEEE MIU Student Branch."
+author: "Karim Wael"
+tags: ["systems-engineering", "reverse-engineering", "php"]
+---
+
+# Reverse Engineering Legacy Portals: Rebuilding Restricted APIs
+
+Integrating third-party operations with legacy institutional software is difficult. Often, no public APIs are documented, leaving developer groups locked out. To build the **IEEE MIU Portal**, I had to reverse-engineer my university's official portal endpoints to automate grade tracking and event registration.
+
+## Intercepting the Auth Flow
+
+Using local proxy tools, I traced the browser session handshakes to decode the token validation routines. The official system relied on basic session validation headers passed dynamically over REST endpoints:
+
+1. **Endpoint Analysis**: Mapped post requests, payloads, and parameter definitions for login routes.
+2. **Token Mimicry**: Constructed automated cURL bridges to negotiate authorization cookies and return JSON models containing student enrollment records.
+3. **MVC Synchronizer**: Wrote custom PHP controllers to fetch these grades hourly, caching progress updates into local MySQL schemas.
+
+## Security Design Choices
+
+Because user credentials bypass standard developer gates, storing university credentials directly is a major vulnerability. We designed a stateless middleware where user inputs are strictly forwarded immediately to the university authentication gateway, returning only session tokens without persisting password hashes on our database servers. Parameterized queries enforce safety on all student catalog tables.

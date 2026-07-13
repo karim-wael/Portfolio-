@@ -1,0 +1,28 @@
+---
+title: "Building SOC AI Omega: Machine Learning in Defensive Operations"
+publishedAt: "2026-03-12"
+summary: "An in-depth look at implementing Random Forest classifiers directly on packet telemetry to intercept cyber threats in real-time."
+author: "Karim Wael"
+tags: ["cybersecurity", "machine-learning", "soc"]
+---
+
+# Building SOC AI Omega: Machine Learning in Defensive Operations
+
+Defensive security teams are constantly flooded with massive streams of telemetry logs. Sorting through these logs manually leads to alert fatigue and delayed responses. SOC AI Omega is a modern response: applying predictive algorithms directly onto raw packet datasets to classify and remediate anomalies autonomously.
+
+## The Detection Pipeline
+
+Rather than relying purely on signatures, SOC AI Omega utilizes a **Random Forest classifier** trained on network telemetry data. Packet sniffing routines feed parsed headers into the inference engine:
+
+1. **Sniffing & Parsing**: Raw packets are intercepted and parsed for protocol fields, size, and frequency features.
+2. **ML Classification**: The Random Forest model assigns a threat probability score.
+3. **Sigma Rules Mapping**: Anomalous flags trigger cross-referencing with active Sigma Rule signatures.
+4. **MITRE ATT&CK Correlation**: If confirmed, threat vectors are tagged with relevant MITRE ATT&CK tactics (e.g., Command and Control, Exfiltration).
+
+```
+Network Packet -> Scikit-learn Classifier -> Threat Triage -> Containment
+```
+
+## Security & Autonomous Response
+
+To guarantee absolute network integrity, the platform contains a **Hyper-Drive mode**. When alert criticality scores exceed defined thresholds, API containment calls trigger script routines within the network gateway to isolate the source IP dynamically inside sandboxed environments.

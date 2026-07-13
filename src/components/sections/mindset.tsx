@@ -11,9 +11,9 @@ const MindsetSection = () => {
     return (
         <SectionWrapper id="mindset" className="py-32 max-w-7xl mx-auto overflow-hidden">
             <SectionHeader 
-                id="how-i-think" 
-                title="How I Think" 
-                desc="My engineering philosophy."
+                id="engineering-philosophy" 
+                title="Engineering Philosophy" 
+                desc="How I think, design, debug, and build systems."
             />
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-20 px-4">
@@ -29,7 +29,7 @@ const MindsetSection = () => {
                         <TerminalDiagnostics />
                     </div>
                 </motion.div>
-
+                
                 {/* Right Side: Narrative + Bullets */}
                 <motion.div 
                     initial={{ opacity: 0, x: 30 }}
@@ -37,10 +37,10 @@ const MindsetSection = () => {
                     viewport={{ once: true }}
                     className="flex flex-col justify-center order-1 lg:order-2"
                 >
-                    <h3 className="text-3xl font-bold mb-6 text-white tracking-tight">I don&apos;t just build applications.</h3>
+                    <h3 className="text-3xl font-bold mb-6 text-white tracking-tight">Systems Over Applications</h3>
                     <p className="text-zinc-400 leading-relaxed mb-8 text-lg">
-                        I design systems with control, performance, and security in mind. 
-                        I prefer local-first architectures, efficient backends, and real-time communication models.
+                        I design and build software systems with security, performance, and autonomy at the core. 
+                        I prioritize local-first architectures, non-blocking telemetry pipelines, and secure cryptographic transport protocols.
                     </p>
 
                     <div className="space-y-4">

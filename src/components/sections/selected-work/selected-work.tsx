@@ -37,8 +37,8 @@ export const SelectedWorkSection = () => {
   );
 
   return (
-    <SectionWrapper id="selected-work" className="max-w-7xl mx-auto min-h-screen py-32 z-10">
-      <SectionHeader id="selected-work" title="Selected Work" />
+    <SectionWrapper id="projects" className="max-w-7xl mx-auto min-h-screen py-32 z-10">
+      <SectionHeader id="projects" title="Featured Case Studies" />
       <motion.div
         variants={containerVariants}
         initial="hidden"

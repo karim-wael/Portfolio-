@@ -179,6 +179,7 @@ const OnlineUsers = () => {
                       src={getAvatarUrl(currentUser.avatar)}
                       className="w-full h-full rounded-full ring-1 ring-black/10 dark:ring-white/10"
                       style={{ backgroundColor: currentUser.color || '#60a5fa' }}
+                      alt={`${currentUser.name || "User"}'s avatar`}
                     />
                     <div className="absolute -bottom-1 -right-1 bg-[#5865f2] rounded-full border-2 border-[var(--bg-primary)]">
                       <Settings className="w-3 h-3 text-white" />
