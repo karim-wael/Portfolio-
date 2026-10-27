@@ -272,21 +272,51 @@ export type Experience = {
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
+    startDate: "Jul 2026",
+    endDate: "Present",
+    title: "Machine Learning Engineering Intern",
+    company: "FlyRank AI",
+    description: [
+      "Contributing to applied machine learning engineering workflows, model evaluation, and inference optimization.",
+      "Developing automated telemetry preprocessing pipelines and evaluation benchmarking for predictive models.",
+      "Collaborating with engineering leads to validate model accuracy, edge-case resilience, and deployment readiness."
+    ],
+    skills: [
+      SkillNames.GCP,
+      SkillNames.AWS,
+      SkillNames.DOCKER,
+      SkillNames.GIT,
+    ],
+  },
+  {
+    id: 2,
+    startDate: "Jul 2026",
+    endDate: "Sep 2026",
+    title: "Agentic AI Intern",
+    company: "Netpoint Software Solutions",
+    description: [
+      "Developed autonomous multi-agent AI systems and automated workflows using commercial LLM APIs and structured JSON schemas.",
+      "Engineered an end-to-end 'Meeting Notes → Action Items' agent parsing transcripts and extracting deliverable task assignments with high fidelity.",
+      "Collaborated in a cross-functional squad to prototype, test, and demonstrate live agentic pipelines during technical showcases."
+    ],
+    skills: [
+      SkillNames.NODEJS,
+      SkillNames.EXPRESS,
+      SkillNames.TS,
+      SkillNames.GIT,
+    ],
+  },
+  {
+    id: 3,
     startDate: "Sep 2025",
     endDate: "Present",
-    title: "R&D Co-Head & Web Developer",
+    title: "Vice President (Formerly Webmaster & R&D Co-Head)",
     company: "IEEE MIU Student Branch",
     description: [
-      "Co-heading Research & Development initiatives for the IEEE student branch.",
-      "Awarded a Certificate of Appreciation for serving as a Course Assistant in the Arduino & Python Junior Program.",
-      "Delivered 20+ hours of training over one month, guiding junior students through hands-on robotics and problem-solving.",
-      "Spearheading the development of the IEEE MIU digital portal (IEEEMIU-PORTAL).",
-      "SmartGen Championship 2026 Leadership: Served as Participation Manager, TA Lead, Event Organizer, and Technical Coordinator, overseeing logistics and participant engagement.",
-      "Curriculum & Educational Content Developer: Acted as Technical Planner to design and structure the robotics and AI learning tracks.",
-      "Robotics, AI & Embedded Systems Instructor: Delivered workshops and hands-on labs as a Technical Mentor, teaching Arduino and programming concepts.",
-      "Project Mentorship: Guided teams through complex technical challenges, helping students transform simple ideas into fully functioning working projects.",
-      "CS Faculty & School Tours Representative: Represented the Computer Science faculty during promotional school tours to inspire high-school students.",
-      "Cross-functional Workflow: Bridged technical, logistics, mentoring, and media teams to create a motivating environment and ensure smooth event execution.",
+      "Elevated to Vice President (Sep 2026) to direct executive technical strategy, organizational governance, and cross-committee alignment for 100+ active members.",
+      "Spearheaded the development of the IEEE MIU digital portal (IEEEMIU-PORTAL) featuring LMS and dynamic certification workflows.",
+      "Directed 30+ student developers across technical workshops; awarded Certificate of Appreciation as Course Assistant in the Arduino & Python Junior Program.",
+      "SmartGen Championship 2026: Served as Participation Manager and TA Lead, overseeing logistics, mentorship, and curriculum delivery for 30+ students across 10 high schools."
     ],
     skills: [
       SkillNames.REACT,

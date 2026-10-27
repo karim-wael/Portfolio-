@@ -28,17 +28,17 @@ const config = {
   site: "https://karim-wael.vercel.app",
 
   // for github stars button
-  githubUsername: "karimcpp110",
-  githubRepo: "3d-portfolio",
+  githubUsername: "karim-wael",
+  githubRepo: "Portfolio-",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-    linkedin: "https://www.linkedin.com/in/karim-wael-40132b360/",
+    linkedin: "https://www.linkedin.com/in/karim-wael-dev/",
     instagram: "https://www.instagram.com/kimo.cpp/",
     facebook: "",
-    github: "https://github.com/karimcpp110",
+    github: "https://github.com/karim-wael",
   },
 };
 export { config };

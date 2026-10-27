@@ -64,6 +64,7 @@ export default function RootLayout({
           src={process.env.UMAMI_DOMAIN}
           data-website-id={process.env.UMAMI_SITE_ID}
         ></Script>
+        <link rel="canonical" href="https://karim-wael.vercel.app" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -75,8 +76,8 @@ export default function RootLayout({
               "jobTitle": "AI Engineer & Cybersecurity Systems Builder",
               "alumniOf": "Misr International University (MIU)",
               "sameAs": [
-                "https://github.com/karimcpp110",
-                "https://www.linkedin.com/in/karim-wael-40132b360/",
+                "https://github.com/karim-wael",
+                "https://www.linkedin.com/in/karim-wael-dev/",
                 "https://www.instagram.com/kimo.cpp/"
               ]
             })
