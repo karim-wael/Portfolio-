@@ -279,10 +279,11 @@ export const EXPERIENCE: Experience[] = [
     description: [
       "Contributing to applied machine learning engineering workflows, model evaluation, and inference optimization.",
       "Developing automated telemetry preprocessing pipelines and evaluation benchmarking for predictive models.",
-      "Collaborating with engineering leads to validate model accuracy, edge-case resilience, and deployment readiness."
+      "Collaborating with engineering leads to validate model accuracy, edge-case resilience, and deployment readiness.",
     ],
     skills: [
-      SkillNames.GCP,
+      SkillNames.PRETTIER, // Python
+      SkillNames.GCP,      // ML Foundations
       SkillNames.AWS,
       SkillNames.DOCKER,
       SkillNames.GIT,
@@ -290,51 +291,86 @@ export const EXPERIENCE: Experience[] = [
   },
   {
     id: 2,
-    startDate: "Jul 2026",
-    endDate: "Sep 2026",
-    title: "Agentic AI Intern",
-    company: "Netpoint Software Solutions",
+    startDate: "Sep 2025",
+    endDate: "Present",
+    title: "Vice Chairman (Formerly Webmaster & R&D Co-Head)",
+    company: "IEEE MIU Student Branch",
     description: [
-      "Developed autonomous multi-agent AI systems and automated workflows using commercial LLM APIs and structured JSON schemas.",
-      "Engineered an end-to-end 'Meeting Notes → Action Items' agent parsing transcripts and extracting deliverable task assignments with high fidelity.",
-      "Collaborated in a cross-functional squad to prototype, test, and demonstrate live agentic pipelines during technical showcases."
+      "Promoted to Vice Chairman (Sep 2026) to direct technical strategy, organizational governance, and cross-committee alignment across the student branch.",
+      "Lead developer of IEEEMIU-PORTAL (custom PHP 8.2 MVC LMS, automated grading, and FPDF certification workflows), with later UI redesign collaboration.",
+      "Directed student developers across technical tracks and earned a Certificate of Appreciation as Course Assistant in the Arduino & Python Junior Program (20 training hours).",
+      "SmartGen Championship 2026: Served as Participation Manager and TA Lead, coordinating logistics, mentoring, and robotics curriculum for 30+ high school participants across 10 schools.",
     ],
     skills: [
-      SkillNames.NODEJS,
-      SkillNames.EXPRESS,
+      SkillNames.REACT,
       SkillNames.TS,
+      SkillNames.VIM, // MySQL
+      SkillNames.DOCKER,
       SkillNames.GIT,
     ],
   },
   {
     id: 3,
-    startDate: "Sep 2025",
-    endDate: "Present",
-    title: "Vice President (Formerly Webmaster & R&D Co-Head)",
-    company: "IEEE MIU Student Branch",
+    startDate: "Jul 2026",
+    endDate: "Sep 2026",
+    title: "Agentic AI Intern",
+    company: "Netpoint Software Solutions",
     description: [
-      "Elevated to Vice President (Sep 2026) to direct executive technical strategy, organizational governance, and cross-committee alignment for 100+ active members.",
-      "Spearheaded the development of the IEEE MIU digital portal (IEEEMIU-PORTAL) featuring LMS and dynamic certification workflows.",
-      "Directed 30+ student developers across technical workshops; awarded Certificate of Appreciation as Course Assistant in the Arduino & Python Junior Program.",
-      "SmartGen Championship 2026: Served as Participation Manager and TA Lead, overseeing logistics, mentorship, and curriculum delivery for 30+ students across 10 high schools."
+      "Developed autonomous multi-agent AI systems and automated workflows using commercial LLM APIs, Google ADK, and structured JSON schemas.",
+      "Engineered an end-to-end 'Meeting Notes → Action Items' agent parsing transcripts and extracting deliverable task assignments, plus an intern progress tracker & challenge generator.",
+      "Collaborated in a cross-functional squad to prototype, test, and demonstrate live agentic pipelines during technical showcases.",
     ],
     skills: [
-      SkillNames.REACT,
+      SkillNames.PRETTIER, // Python
       SkillNames.NODEJS,
-      SkillNames.POSTGRES,
+      SkillNames.TS,
       SkillNames.GIT,
-      SkillNames.DOCKER,
     ],
   },
   {
-    id: 2,
-    startDate: "Nov 2025",
+    id: 4,
+    startDate: "Jun 2026",
     endDate: "Present",
+    title: "Ambassador (ID: SCA004)",
+    company: "IEEE Sensors Council Egypt Chapter",
+    description: [
+      "Representing the IEEE Sensors Council Egypt Chapter, driving technical outreach, partnerships, and workshops across Egyptian engineering student branches.",
+      "Bridging physical sensor hardware and embedded telemetry with applied Machine Learning and software systems.",
+    ],
+    skills: [
+      SkillNames.NGINX,    // Arduino
+      SkillNames.PRETTIER, // Python
+      SkillNames.NPM,      // C++
+    ],
+  },
+  {
+    id: 5,
+    startDate: "Nov 2026",
+    endDate: "Nov 2026",
+    title: "AI & Data Systems Engineer (Galactic Problem Solver Recognition)",
+    company: "NASA Space Apps Challenge — Team The Fireflies",
+    description: [
+      "Co-engineered FLARE AI (Fire & Low-Gravity Archive Research Engine) for the 2026 'Flame in Freefall' challenge, ingesting and harmonizing 1,157 historical NASA PSI runs and 10,079 measurements across 6 spaceflight investigations.",
+      "Contributed to the ETL & provenance pipeline, domain-gated similarity ranking engine, and guardrail-enforced RAG copilot with verbatim quote checks.",
+      "Eliminated SQLAlchemy Cartesian joins and N+1 ORM hydration causing Render OOMs (~43x faster local assistant retrieval in dev testing).",
+    ],
+    skills: [
+      SkillNames.PRETTIER, // Python
+      SkillNames.NEXTJS,
+      SkillNames.TS,
+      SkillNames.POSTGRES,
+      SkillNames.GIT,
+    ],
+  },
+  {
+    id: 6,
+    startDate: "Nov 2025",
+    endDate: "Aug 2026",
     title: "Public Relations Member",
     company: "MSP Tech Club — MIU",
     description: [
-      "Contributing to public relations strategies and tech community initiatives.",
-      "Bridging technical knowledge with outreach and engagement.",
+      "Contributed to technical outreach, campus event visibility, and student community engagement strategies.",
+      "Bridged engineering workshops with broader developer participation across campus.",
     ],
     skills: [
       SkillNames.HTML,
@@ -343,36 +379,36 @@ export const EXPERIENCE: Experience[] = [
     ],
   },
   {
-    id: 3,
-    startDate: "Oct 2024",
-    endDate: "Oct 2024",
-    title: "Technical Team Lead",
-    company: "NASA Space Apps Challenge (Team Moon Walkers)",
+    id: 7,
+    startDate: "Oct 2025",
+    endDate: "Oct 2025",
+    title: "Technical Team Lead (Galactic Problem Solver Recognition)",
+    company: "NASA Space Apps Challenge — Team Moon Walkers",
     description: [
-      "Led Team 'Moon Walkers' in the 2024 NASA Space Apps Challenge.",
-      "Built 'ProbCast' — an environmental intelligence platform using NASA POWER API to predict weather conditions for event planning.",
-      "Orchestrated data processing and AI model integration for real-time weather alerts.",
+      "Led Team 'Moon Walkers' in the October 4–5, 2025 NASA International Space Apps Challenge, earning official Galactic Problem Solver project completion recognition.",
+      "Built 'ProbCast' — an environmental intelligence prototype ingesting NASA POWER satellite telemetry to model rainfall and climate probabilities.",
+      "Later evolved the platform into the Aether Climate Dashboard (FastAPI + Chart.js + Leaflet.js) with 120-second API response caching.",
     ],
     skills: [
-      SkillNames.EXPRESS, // Python (mapped in this template)
-      SkillNames.NODEJS,
+      SkillNames.PRETTIER, // Python
+      SkillNames.JS,
       SkillNames.GIT,
     ],
   },
   {
-    id: 4,
+    id: 8,
     startDate: "Oct 2024",
     endDate: "Oct 2025",
     title: "Technical Team Member",
     company: "IEEE MIU Student Branch",
     description: [
-      "Built hardware/software prototypes for high-impact technical programs.",
-      "Participated as a key technical contributor in the Multi-School Robotics Training program.",
-      "Developed projects using Pygame and earned Python Basic Certificate from HackerRank.",
+      "Built hardware/software prototypes (FireBot RC firefighting robot, Arduino sensor systems) for branch technical programs.",
+      "Completed the IEEE MIU Python curriculum and earned HackerRank verified certifications in Problem Solving and SQL.",
     ],
     skills: [
-      SkillNames.NGINX,   // Arduino
-      SkillNames.REACT,
+      SkillNames.NGINX,    // Arduino
+      SkillNames.NPM,      // C++
+      SkillNames.PRETTIER, // Python
       SkillNames.GIT,
     ],
   },
@@ -407,10 +443,10 @@ export type Education = {
 export const EDUCATION: Education[] = [
   {
     id: 1,
-    startDate: "2024",
-    endDate: "2028",
-    degree: "BSc in Computer Science",
+    startDate: "Fall 2024",
+    endDate: "Present",
+    degree: "B.Sc. in Computer Science — Data and Information, Cybersecurity Focus",
     institution: "Misr International University (MIU)",
-    description: "Focus on Algorithms, Machine Learning, and Software Architecture.",
+    description: "Active undergraduate (enrolled since Fall 2024) focusing on Data & Information systems, Cybersecurity, Applied AI, and Systems Engineering.",
   },
 ];

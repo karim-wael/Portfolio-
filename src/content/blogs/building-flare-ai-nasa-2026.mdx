@@ -1,0 +1,25 @@
+---
+title: "Building FLARE AI: Source-Grounded Microgravity RAG for NASA Space Apps 2026"
+publishedAt: "2026-11-15"
+summary: "How Team The Fireflies ingested 1,157 historical NASA PSI runs, enforced G1–G7 scientific guardrails, and eliminated SQLAlchemy OOM bottlenecks (~43x faster dev retrieval)."
+author: "Karim Wael"
+tags: ["nasa", "rag", "fastapi", "nextjs"]
+---
+
+# Building FLARE AI: Source-Grounded Microgravity RAG for NASA Space Apps 2026
+
+In microgravity (`0g`), flames behave fundamentally differently from fire on Earth (`1g`). Without buoyant convection, hot gases do not rise into teardrop shapes; instead, flames form slow, diffusion-driven fronts that persist under lower oxygen fractions.
+
+For the **2026 NASA Space Apps Challenge ("Flame in Freefall")**, Team *The Fireflies* built **FLARE AI (Fire & Low-Gravity Archive Research Engine)**—a scientific archive and retrieval workspace ingesting six historical NASA Physical Sciences Informatics (PSI) microgravity combustion investigations (`FLEX`, `BASS-II`, `SPICE`, `SAME`, `SAME-R`, and `Saffire-I`).
+
+## 3-Layer Provenance & Hybrid Knowledge Architecture
+
+1. **Ingested Historical PSI Registry (`FLARE_AI_Data_Handoff`)**: Normalized **1,157 historical experiment runs**, **10,079 ingested measurements**, **128 SHA-256-checksummed source files**, and **1,312 document chunks** across **21 NASA reference documents** into canonical units (`kPa`, `O2 mole fraction`, `cm/s`) while preserving explicit `missing_reason` flags (`not_reported`, `not_measured`).
+2. **Domain-Gated Similarity Matcher (`flare_ranking`)**: Prevents invalid cross-domain comparisons (such as liquid-droplet burn time in FLEX vs. solid-fuel flame spread in BASS-II) and isolates terrestrial `1g` baselines from `0g` rankings.
+3. **Guardrail-Enforced RAG Copilot (`flare_llm_engine`)**: Combines TF-IDF lexical scoring, coverage-matrix cells, and SQL queries, verifying quoted excerpts against ingested NASA source text while flagging Moon (`0.16g`) and Mars (`0.38g`) partial-gravity data gaps.
+
+## SQLAlchemy ORM Bottleneck Fix (~43x Faster Dev Retrieval)
+
+During deployment testing on Render + Vercel (`flame-ai-six.vercel.app`), eager SQLAlchemy `joinedload` relationship hydration triggered Cartesian joins and N+1 queries across the 1,157 runs, causing `502 OOM` failures on memory-constrained containers. Refactoring `rag.py`, `main.py`, and `similarity.py` (commit `056eb60`) to project 4 scalar columns before top-K hydration, pre-warming the TF-IDF index at FastAPI lifespan startup, and skipping malformed `AQ.` API keys eliminated the OOM crashes and delivered ~43x faster local assistant responses in development testing.
+
+*Note on Known Limitations & Scope:* FLARE AI earned official **2026 NASA Space Apps "Galactic Problem Solver"** project completion recognition. As a hackathon prototype, known hardening items include adding token enforcement to `POST /api/ingestion/jobs` (currently unauthenticated despite defining `INGESTION_API_TOKEN` in `config.py`), tightening wildcard CORS (`allow_origins=["*"]`), and expanding the automated backend test suite beyond the current single smoke test.

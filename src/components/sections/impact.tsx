@@ -6,29 +6,29 @@ import { cn } from "@/lib/utils";
 
 const metrics = [
   {
-    value: "10+",
-    label: "Engineering Projects",
-    desc: "Robust backends, cybersecurity command centers, and custom AI agents built from the ground up.",
+    value: "2x NASA",
+    label: "Galactic Problem Solver Recognition (2025 & 2026)",
+    desc: "Official Space Apps project completion recognition for ProbCast (2025) and FLARE AI (2026, ingesting 1,157 historical NASA PSI runs & 10,079 measurements).",
   },
   {
-    value: "3+",
-    label: "Leadership Roles",
-    desc: "Directing technical teams, coordinating TA groups, and organizing national robotics competitions.",
+    value: "2 Internships",
+    label: "FlyRank AI & Netpoint Software",
+    desc: "Applied ML engineering workflows, model evaluation benchmarking, Google ADK tool agents, and structured LLM schemas.",
   },
   {
-    value: "IEEE Egypt",
-    label: "Sensors Council Egypt Ambassador",
-    desc: "Advocating for technological literacy and driving sensor-based engineering student branches nationwide.",
+    value: "16+ Projects",
+    label: "AI, Backend & Security Systems",
+    desc: "Spanning source-grounded RAG, .NET 8/ONNX endpoint security prototypes, C++ WebSocket servers, and Laravel 11 lab reservations.",
   },
   {
-    value: "NASA Space Apps",
-    label: "Technical Team Lead",
-    desc: "Architected ProbCast for real-time environmental alerts using satellite data telemetry.",
+    value: "Vice Chairman",
+    label: "IEEE MIU Student Branch & Sensors Ambassador",
+    desc: "Leading student branch technical strategy as Vice Chairman and serving as IEEE Sensors Council Egypt Chapter Ambassador (SCA004).",
   },
   {
-    value: "AI & ML",
-    label: "Systems Builder",
-    desc: "Deploying local RAG pipelines, off-grid LLM runtime engines, and machine learning telemetry classifiers.",
+    value: "12+ Certs",
+    label: "NVIDIA · Huawei · AWS · Cisco · IBM",
+    desc: "Verified credentials across Deep Learning, HCIA-AI V4.0, AWS ML & GenAI Foundations, Cybersecurity, and SQL.",
   },
 ];
 
@@ -49,7 +49,6 @@ export default function ImpactDashboard() {
   return (
     <SectionWrapper id="impact" className="py-24 max-w-7xl mx-auto z-10 relative">
       <div className="px-4">
-        {/* Section Header */}
         <div className="mb-12">
           <h2 className="text-xs font-mono tracking-[0.2em] text-blue-500 uppercase mb-2">
             System Telemetry
@@ -59,7 +58,6 @@ export default function ImpactDashboard() {
           </h3>
         </div>
 
-        {/* Dashboard Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -73,15 +71,11 @@ export default function ImpactDashboard() {
               variants={itemVariants}
               className={cn(
                 "group relative overflow-hidden rounded-xl bg-zinc-900/60 border border-zinc-800 p-6 backdrop-blur-sm",
-                "hover:border-blue-500/30 transition-all duration-300",
-                metric.value.includes("IEEE") || metric.value.includes("NASA")
-                  ? "lg:col-span-1"
-                  : ""
+                "hover:border-blue-500/30 transition-all duration-300"
               )}
             >
-              {/* Corner decorative light effect */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-full filter blur-md group-hover:bg-blue-500/10 transition-colors duration-300" />
-              
+
               <div className="flex flex-col h-full justify-between relative z-10">
                 <div>
                   <div className="text-3xl md:text-4xl font-bold font-display bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400 group-hover:from-blue-400 group-hover:to-cyan-400 transition-colors duration-300 mb-2">

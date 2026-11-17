@@ -41,15 +41,19 @@ const itemVariants = {
   },
 };
 
+const FEATURED_IDS = ["flare-ai", "revenant", "talky", "ece-labs", "soc-ai", "ieee-portal"];
+
 const ProjectsSection = () => {
-  // Only select non-flagship projects
-  const otherProjects = projects.filter((p) =>
-    !["talky", "chiggabot", "soc-ai", "ieee-portal"].includes(p.id)
-  );
+  const otherProjects = projects.filter((p) => !FEATURED_IDS.includes(p.id));
 
   return (
-    <SectionWrapper id="projects" className="max-w-7xl mx-auto min-h-screen py-32">
-      <SectionHeader id="projects" title="Other Projects" />
+    <SectionWrapper id="other-projects" className="max-w-7xl mx-auto py-24 z-10 relative">
+      <SectionHeader
+        id="other-projects"
+        title="More Engineering Work"
+        desc="AI agents, NASA Space Apps climate analytics, computer vision pipelines, robotics, and desktop/web apps."
+        className="mb-16 mt-0"
+      />
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -58,7 +62,7 @@ const ProjectsSection = () => {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
       >
         {otherProjects.map((project) => (
-          <motion.div key={project.src} variants={itemVariants}>
+          <motion.div key={project.id} variants={itemVariants}>
             <ProjectCard project={project} />
           </motion.div>
         ))}
@@ -114,12 +118,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
             </ModalContent>
           </SmoothScroll>
           <ModalFooter className="gap-4">
-            <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
-              Cancel
-            </button>
+            <Link href={`/work/${project.id}`}>
+              <button className="bg-blue-600 text-white text-sm px-4 py-1.5 rounded-md hover:bg-blue-500 transition-colors">
+                Full Case Study
+              </button>
+            </Link>
             {project.live && (
               <Link href={project.live} target="_blank">
-                <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
+                <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-4 py-1.5 rounded-md border border-black">
                   Visit
                 </button>
               </Link>

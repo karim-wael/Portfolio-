@@ -9,25 +9,25 @@ import { motion } from "framer-motion";
 
 const previewPosts = [
   {
+    title: "Building FLARE AI: Source-Grounded Microgravity RAG for NASA Space Apps 2026",
+    publishedAt: "2026-11-15",
+    summary: "How Team The Fireflies ingested 1,157 historical NASA PSI runs, enforced G1–G7 guardrails, and eliminated SQLAlchemy OOM bottlenecks (~43x faster dev retrieval).",
+    slug: "building-flare-ai-nasa-2026",
+    tag: "NASA 2026",
+  },
+  {
+    title: "Project Revenant: Designing an Out-of-Band Self-Healing Endpoint Defense",
+    publishedAt: "2026-10-28",
+    summary: "Co-engineering a decoupled .NET 8, mTLS, Ed25519, ONNX, and write-only vault prototype validated on a single-laptop loopback sandbox.",
+    slug: "building-project-revenant",
+    tag: "Endpoint Security",
+  },
+  {
     title: "Building SOC AI Omega: Machine Learning in Defensive Operations",
     publishedAt: "2026-03-12",
-    summary: "An in-depth look at implementing Random Forest classifiers directly on packet telemetry to intercept cyber threats in real-time.",
+    summary: "Implementing Random Forest classifiers, Zero-Leak PII sanitization, and Sigma YAML rules inside a FastAPI SIEM/SOAR fusion dashboard.",
     slug: "building-soc-ai-omega",
     tag: "Cybersecurity",
-  },
-  {
-    title: "Local AI Agents: Designing Secure Offline RAG Architectures",
-    publishedAt: "2026-04-05",
-    summary: "How to construct a fully offline Retrieval-Augmented Generation pipeline using Ollama and FAISS without exposing codebase tokens.",
-    slug: "local-ai-agents-rag",
-    tag: "AI Agents",
-  },
-  {
-    title: "NASA Space Apps: Weather Risk Modeling with ProbCast",
-    publishedAt: "2024-10-15",
-    summary: "Reflecting on leading Team Moon Walkers, parsing earth observation telemetry, and building Streamlit dashboards under a 48-hour deadline.",
-    slug: "nasa-space-apps-experience",
-    tag: "Leadership",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function BlogPreview() {
         <SectionHeader
           id="blog-preview"
           title="Technical Log"
-          desc="Writing about AI architectures, defensive security, and reverse-engineered platforms."
+          desc="Architecture notes on microgravity RAG, endpoint security, defensive ML, and reverse-engineered systems."
           className="mb-16 mt-0"
         />
 

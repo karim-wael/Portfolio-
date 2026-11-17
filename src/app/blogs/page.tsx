@@ -7,8 +7,11 @@ import { CalendarDays, User } from "lucide-react";
 import RevealAnimation from "@/components/reveal-animations";
 
 export const metadata = {
-  title: "Blog | Portfolio",
-  description: "Thoughts, tutorials, and updates from the space.",
+  title: "Technical Log & Engineering Blog",
+  description: "Engineering notes on microgravity RAG, endpoint security prototypes, SIEM/SOAR systems, and NASA Space Apps projects by Karim Wael.",
+  alternates: {
+    canonical: "/blogs",
+  },
 };
 
 export default function BlogPage() {

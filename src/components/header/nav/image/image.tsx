@@ -12,6 +12,7 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ src, isActive, alt = "Navigation Thumbnail" }) => {
+  if (!src) return null;
   return (
     <motion.div
       variants={opacity}

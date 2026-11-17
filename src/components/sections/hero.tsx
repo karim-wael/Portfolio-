@@ -40,7 +40,7 @@ const HeroSection = () => {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
-                  Available for AI & Systems Engineering Roles
+                  2x NASA Galactic Problem Solver (2025 &amp; 2026) · AI &amp; Backend Systems
                 </div>
               </BlurIn>
 
@@ -89,10 +89,10 @@ const HeroSection = () => {
                       "bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-500"
                     )}
                   >
-                    AI Engineer | Cybersecurity | Software Systems
+                    AI &amp; Backend Developer · Systems Builder · IEEE MIU Vice Chairman
                   </p>
                   <p className="md:self-start mt-2 text-sm md:text-base text-muted-foreground max-w-lg">
-                    Building secure intelligent systems through AI, cybersecurity, and scalable software architecture.
+                    Cybersecurity-focused Computer Science undergraduate (Data &amp; Information) building source-grounded RAG platforms, mTLS/ONNX security prototypes, C++ WebSocket servers, and concurrency-safe web systems.
                   </p>
                 </BlurIn>
               </div>
@@ -124,7 +124,7 @@ const HeroSection = () => {
                   </Link>
                 </Magnetic>
                 <div className="md:self-start flex flex-wrap gap-3">
-                  <Link href={"#selected-work"}>
+                  <Link href={"#projects"}>
                     <Button
                       variant={"default"}
                       className="w-full md:w-auto px-8"
@@ -145,9 +145,10 @@ const HeroSection = () => {
                       <Link
                         href={config.social.instagram}
                         target="_blank"
+                        aria-label="Instagram profile"
                       >
-                        <Button variant={"outline"}>
-                          <SiInstagram size={24} />
+                        <Button variant={"outline"} aria-label="Instagram profile">
+                          <SiInstagram size={24} aria-hidden="true" />
                         </Button>
                       </Link>
                     </Magnetic>
@@ -156,9 +157,10 @@ const HeroSection = () => {
                         href={config.social.github}
                         target="_blank"
                         className="cursor-can-hover"
+                        aria-label="GitHub profile"
                       >
-                        <Button variant={"outline"}>
-                          <SiGithub size={24} />
+                        <Button variant={"outline"} aria-label="GitHub profile">
+                          <SiGithub size={24} aria-hidden="true" />
                         </Button>
                       </Link>
                     </Magnetic>
@@ -167,9 +169,10 @@ const HeroSection = () => {
                         href={config.social.linkedin}
                         target="_blank"
                         className="cursor-can-hover"
+                        aria-label="LinkedIn profile"
                       >
-                        <Button variant={"outline"}>
-                          <SiLinkedin size={24} />
+                        <Button variant={"outline"} aria-label="LinkedIn profile">
+                          <SiLinkedin size={24} aria-hidden="true" />
                         </Button>
                       </Link>
                     </Magnetic>

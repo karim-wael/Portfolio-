@@ -10,20 +10,28 @@ import AppOverlays from "@/components/app-overlays";
 import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
-  title: config.title, // v2 – Systems Engineer Edition
+  metadataBase: new URL(config.site),
+  title: {
+    default: config.title,
+    template: `%s | ${config.author}`,
+  },
   description: config.description.long,
   keywords: config.keywords,
   authors: [{ name: config.author }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: config.title,
     description: config.description.short,
     url: config.site,
+    siteName: "Karim Wael Portfolio",
     images: [
       {
         url: config.ogImg,
         width: 800,
         height: 600,
-        alt: "Portfolio preview",
+        alt: "Karim Wael — AI & Backend Developer Portfolio Preview",
       },
     ],
     type: "website",
@@ -64,7 +72,6 @@ export default function RootLayout({
           src={process.env.UMAMI_DOMAIN}
           data-website-id={process.env.UMAMI_SITE_ID}
         ></Script>
-        <link rel="canonical" href="https://karim-wael.vercel.app" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -72,15 +79,28 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Karim Wael",
-              "url": "https://karim-wael.vercel.app",
-              "jobTitle": "AI Engineer & Cybersecurity Systems Builder",
-              "alumniOf": "Misr International University (MIU)",
+              "url": "https://karim-wael.vercel.app/",
+              "jobTitle": "AI & Backend Developer | Vice Chairman — IEEE MIU Student Branch",
+              "affiliation": {
+                "@type": "CollegeOrUniversity",
+                "name": "Misr International University (MIU)",
+              },
+              "memberOf": [
+                {
+                  "@type": "Organization",
+                  "name": "IEEE MIU Student Branch",
+                },
+                {
+                  "@type": "Organization",
+                  "name": "IEEE Sensors Council Egypt Chapter",
+                },
+              ],
               "sameAs": [
                 "https://github.com/karim-wael",
                 "https://www.linkedin.com/in/karim-wael-dev/",
-                "https://www.instagram.com/kimo.cpp/"
-              ]
-            })
+                "https://www.instagram.com/kimo.cpp/",
+              ],
+            }),
           }}
         />
         <script
@@ -90,8 +110,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Karim Wael Portfolio",
-              "url": "https://karim-wael.vercel.app"
-            })
+              "url": "https://karim-wael.vercel.app/",
+            }),
           }}
         />
         {/* <Analytics /> */}

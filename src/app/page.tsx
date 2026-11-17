@@ -1,36 +1,15 @@
-"use client";
+import type { Metadata } from "next";
+import HomePageClient from "@/components/home-page-client";
+import { config } from "@/data/config";
 
-import React from "react";
-import SmoothScroll from "@/components/smooth-scroll";
-import { cn } from "@/lib/utils";
-import AnimatedBackground from "@/components/animated-background";
-import ContactSection from "@/components/sections/contact";
-import HeroSection from "@/components/sections/hero";
-import MindsetSection from "@/components/sections/mindset";
-import SelectedWorkSection from "@/components/sections/selected-work/selected-work";
-import ImpactDashboard from "@/components/sections/impact";
-import LeadershipSection from "@/components/sections/leadership";
-import TechStackSection from "@/components/sections/tech-stack";
-import CertificationsSection from "@/components/sections/certifications";
-import BlogPreview from "@/components/sections/blog-preview";
+export const metadata: Metadata = {
+  title: config.title,
+  description: config.description.long,
+  alternates: {
+    canonical: "/",
+  },
+};
 
-function MainPage() {
-  return (
-    <SmoothScroll>
-      <AnimatedBackground />
-      <main className={cn("bg-slate-100 dark:bg-transparent canvas-overlay-mode")}>
-        <HeroSection />
-        <ImpactDashboard />
-        <SelectedWorkSection />
-        <LeadershipSection />
-        <MindsetSection />
-        <TechStackSection />
-        <CertificationsSection />
-        <BlogPreview />
-        <ContactSection />
-      </main>
-    </SmoothScroll>
-  );
+export default function MainPage() {
+  return <HomePageClient />;
 }
-
-export default MainPage;

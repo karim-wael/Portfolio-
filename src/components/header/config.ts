@@ -2,37 +2,50 @@ import { Link } from "@/types";
 
 const links: Link[] = [
   {
-    title: 'Home',
-    href: '/',
+    title: "Home",
+    href: "/",
+    thumbnail: "/assets/nav-link-previews/landing.png",
   },
   {
-    title: 'Projects',
-    href: '/#projects',
+    title: "Featured Work",
+    href: "/#projects",
+    thumbnail: "/assets/nav-link-previews/projects.png",
   },
   {
-    title: 'Leadership',
-    href: '/#leadership',
+    title: "All Projects",
+    href: "/projects",
+    thumbnail: "/assets/nav-link-previews/projects.png",
   },
   {
-    title: 'Philosophy',
-    href: '/#engineering-philosophy',
+    title: "Experience",
+    href: "/#experience",
+    thumbnail: "/assets/nav-link-previews/landing.png",
   },
   {
-    title: 'Tech Stack',
-    href: '/#skills',
+    title: "Leadership",
+    href: "/#leadership",
+    thumbnail: "/assets/nav-link-previews/landing.png",
   },
   {
-    title: 'Certifications',
-    href: '/#certifications',
+    title: "Tech Stack",
+    href: "/#tech-stack",
+    thumbnail: "/assets/nav-link-previews/skills.png",
   },
   {
-    title: 'Blogs',
-    href: '/blogs',
+    title: "Certifications",
+    href: "/#certifications",
+    thumbnail: "/assets/nav-link-previews/skills.png",
   },
   {
-    title: 'Contact',
-    href: '/#contact',
-  }
+    title: "Blogs",
+    href: "/blogs",
+    thumbnail: "/assets/nav-link-previews/landing.png",
+  },
+  {
+    title: "Contact",
+    href: "/#contact",
+    thumbnail: "/assets/nav-link-previews/contact.png",
+  },
 ];
 
 export { links };

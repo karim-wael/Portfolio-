@@ -8,45 +8,44 @@ import { Shield, Users, Trophy, Milestone } from "lucide-react";
 
 const leadershipRoles = [
   {
-    role: "Ambassador",
-    org: "IEEE Sensors Council Egypt",
+    role: "Vice Chairman — IEEE MIU Student Branch",
+    org: "IEEE MIU Student Branch (Formerly Webmaster & R&D Co-Head)",
     impact: [
-      "Pioneered national tech advocacy and outreach campaigns across multiple student branches.",
-      "Facilitated educational tracks bridging sensor hardware engineering with local Machine Learning paradigms."
+      "Promoted to Vice Chairman (Sep 2026) overseeing technical strategy, cross-committee alignment, and branch operations.",
+      "Lead developer of IEEEMIU-PORTAL (custom PHP 8.2 MVC LMS, automated grading, and FPDF certification) with collaborative UI redesign.",
+      "Earned Certificate of Appreciation as Course Assistant for the 20-hour Arduino & Python Junior Program.",
     ],
-    metrics: "200+ Students Reached",
-    icon: <Shield className="text-blue-500 w-6 h-6" />,
+    metrics: "Executive Leadership",
+    icon: <Users className="text-emerald-500 w-6 h-6" />,
   },
   {
-    role: "Research & Development Co-Head",
-    org: "IEEE MIU Student Branch",
+    role: "IEEE Sensors Council Egypt Chapter Ambassador (ID: SCA004)",
+    org: "IEEE Sensors Council Egypt Chapter",
     impact: [
-      "Led full-stack teams developing internal platforms and learning tools for student branches.",
-      "Mentored junior developers in secure web programming, git-flow protocols, and API development.",
-      "Spearheaded IEEEMIU-PORTAL design and database workflows."
+      "Representing the Egyptian chapter across student branches to drive sensor engineering literacy and technical outreach.",
+      "Facilitating educational tracks bridging embedded hardware telemetry with applied Machine Learning and software systems.",
     ],
-    metrics: "100+ active users managed",
-    icon: <Users className="text-emerald-500 w-6 h-6" />,
+    metrics: "Chapter Outreach",
+    icon: <Shield className="text-blue-500 w-6 h-6" />,
   },
   {
     role: "Participation Manager & TA Lead",
     org: "SmartGen Championship 2026",
     impact: [
-      "Orchestrated participant logistics, mentoring, and technical coordinator workflows.",
-      "Designed curriculum and delivered hands-on robotics workshops (Arduino & Embedded C++).",
-      "Mentored teams from conceptualization to fully operational projects."
+      "Managed participant workflows, school tour outreach, and mentorship checkpoints across 10 high schools.",
+      "Delivered hands-on Arduino, embedded C++, and Python workshops guiding 30+ participating students toward competition prototypes.",
     ],
-    metrics: "20+ hours of embedded training",
+    metrics: "30+ Students · 10 Schools · 20+ hrs",
     icon: <Trophy className="text-yellow-500 w-6 h-6" />,
   },
   {
-    role: "Technical Lead",
-    org: "NASA Space Apps Challenge (Moon Walkers)",
+    role: "2x Galactic Problem Solver (Oct 2025 & Nov 2026)",
+    org: "NASA International Space Apps Challenge",
     impact: [
-      "Architected 'ProbCast' using NASA POWER API to model rain probability forecasts.",
-      "Managed real-time Python model integrations and deployed a clean Streamlit portal."
+      "2026 (FLARE AI — Team The Fireflies): Co-engineered a source-grounded NASA PSI historical combustion archive engine and verbatim RAG copilot.",
+      "2025 (ProbCast — Team Moon Walkers Lead): Led a 4-person squad building predictive rainfall risk models from NASA POWER satellite data.",
     ],
-    metrics: "Top-tier regional ranking",
+    metrics: "Official Completion Recognition",
     icon: <Milestone className="text-purple-500 w-6 h-6" />,
   },
 ];
@@ -71,7 +70,7 @@ export default function LeadershipSection() {
         <SectionHeader
           id="leadership"
           title="Leadership & Community Impact"
-          desc="Organizing championships, leading development circles, and driving national tech initiatives."
+          desc="Executive branch leadership, multi-school robotics training, and 2x NASA Space Apps engineering."
           className="mb-16 mt-0"
         />
 

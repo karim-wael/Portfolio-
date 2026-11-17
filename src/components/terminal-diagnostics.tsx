@@ -4,18 +4,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const DIAGNOSTIC_LOGS = [
-  { text: "> INIT system_kernel v4.2.1", type: "process" },
-  { text: "> LOADING project_manifest...", type: "process" },
-  { text: "> FOUND 22 deployments", type: "success" },
-  { text: "> VERIFIED 19 credentials", type: "success" },
-  { text: "> SCANNING threat_surface...", type: "warning" },
-  { text: "> SECURE: All ports nominal", type: "success" },
-  { text: "> BUILDING neural_pipeline...", type: "process" },
-  { text: "> ML_MODEL accuracy: 99.2%", type: "success" },
-  { text: "> WEBSOCKET bridge: ACTIVE", type: "success" },
-  { text: "> UPTIME: 99.97%", type: "success" },
-  { text: "> PING karim@MIU: 0.4ms", type: "process" },
-  { text: "> R&D_STATUS: OPERATIONAL", type: "success" },
+  { text: "> INIT karim_wael_kernel v4.5", type: "process" },
+  { text: "> FLARE_AI: 1,157 historical PSI runs indexed", type: "success" },
+  { text: "> REVENANT: mTLS + Ed25519 + ONNX sandbox", type: "success" },
+  { text: "> ECE_LABS: lockForUpdate() + Reverb active", type: "success" },
+  { text: "> TALKY: C++ WSManager sockets bound", type: "process" },
+  { text: "> RECOGNITION: 2x NASA Galactic Problem Solver", type: "success" },
+  { text: "> INTERNSHIPS: FlyRank AI & Netpoint ADK", type: "process" },
+  { text: "> GUARDRAIL: 0g vs 1g domain gate locked", type: "warning" },
+  { text: "> IEEE_MIU: Vice Chairman role ACTIVE", type: "success" },
+  { text: "> CERTS: NVIDIA · Huawei · AWS · Cisco", type: "success" },
 ];
 
 export default function TerminalDiagnostics({ isOverlay = false }: { isOverlay?: boolean }) {

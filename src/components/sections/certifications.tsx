@@ -3,71 +3,95 @@ import React from "react";
 import SectionWrapper from "../ui/section-wrapper";
 import { SectionHeader } from "./section-header";
 import { motion } from "framer-motion";
-import { Award, Cloud, Cpu, Code, ExternalLink } from "lucide-react";
+import { Award, Cloud, Cpu, ShieldCheck, Code, ExternalLink } from "lucide-react";
 
 const certGroups = [
   {
-    domain: "Artificial Intelligence",
+    domain: "Artificial Intelligence & Deep Learning",
     icon: <Cpu className="w-5 h-5 text-blue-400" />,
     items: [
       {
-        title: "Huawei HCIA-AI V4.0",
-        issuer: "Huawei ICT Academy",
-        description: "Certified AI Associate covering deep neural networks, machine learning fundamentals, and AI workflows.",
-      },
-      {
         title: "Fundamentals of Deep Learning",
         issuer: "NVIDIA Deep Learning Institute (DLI)",
-        description: "Hands-on application of deep neural networks to computer vision and sequence tasks.",
+        description: "Certificate of Competency (Feb 16, 2026 · ID: 2wJxG6HWTrKbKAsDoxV-Gw) covering deep neural networks and computer vision.",
         link: "/assets/certificates/nvidia-deep-learning.pdf",
       },
       {
-        title: "AI Fundamentals",
+        title: "Huawei HCIA-AI V4.0",
+        issuer: "Huawei ICT Academy",
+        description: "Certified AI Associate (Feb 2026) covering machine learning fundamentals, deep learning frameworks, and AI workflows.",
+      },
+      {
+        title: "Artificial Intelligence Fundamentals",
         issuer: "IBM SkillsBuild",
-        description: "Foundational training in modern neural networks, prompting engineering, and cognitive architectures.",
+        description: "Credly-verified credential (Nov 16, 2025) in neural networks, NLP, computer vision, and ethical AI.",
+        link: "/assets/certificates/AIFundamentalsUpdated20251116-31-smtkgk.pdf",
+      },
+      {
+        title: "AI Fundamentals with IBM SkillsBuild",
+        issuer: "Cisco Networking Academy + IBM",
+        description: "Statement of Achievement (Nov 16, 2025) building and evaluating ML workflows in IBM Watson Studio.",
         link: "/assets/certificates/ibm-ai-fundamentals.pdf",
       },
     ],
   },
   {
-    domain: "Cloud Infrastructure",
-    icon: <Cloud className="w-5 h-5 text-emerald-400" />,
+    domain: "Hackathons, Security & National Programs",
+    icon: <ShieldCheck className="w-5 h-5 text-cyan-400" />,
     items: [
       {
-        title: "AWS Academy Graduate - Generative AI Foundations",
-        issuer: "Amazon Web Services (AWS)",
-        description: "Verified training badge covering Generative AI patterns, prompt design, and cloud foundation pipelines.",
-        link: "/assets/certificates/aws-generative-ai.pdf",
+        title: "2026 Galactic Problem Solver",
+        issuer: "NASA Space Apps Challenge",
+        description: "Official project completion recognition (Nov 14–15, 2026) for FLARE AI (Microgravity Combustion & Hybrid Knowledge Engine).",
+        link: "/assets/certificates/nasa-space-apps-2026.png",
       },
       {
-        title: "AWS Academy Graduate - ML Foundations",
-        issuer: "Amazon Web Services (AWS)",
-        description: "AWS cloud architectures, scalable deployments, and managed AI/ML pipelines (Amazon SageMaker).",
-        link: "/assets/certificates/aws-machine-learning-foundations.pdf",
+        title: "2025 Galactic Problem Solver",
+        issuer: "NASA International Space Apps Challenge",
+        description: "Official project completion recognition (Oct 4–5, 2025) for leading Team Moon Walkers on ProbCast climate risk analytics.",
+        link: "/assets/certificates/nasa-space-apps-2025.png",
+      },
+      {
+        title: "Introduction to Cybersecurity",
+        issuer: "Cisco Networking Academy",
+        description: "Completed Sep 11, 2025 covering cyber threat vectors, network defense, and security operations foundations.",
+        link: "/assets/certificates/cisco-intro-cybersecurity.png",
+      },
+      {
+        title: "DIGITOPIA 2025 — Software & AI Track",
+        issuer: "Egypt Ministry of Communications (MCIT)",
+        description: "Advanced to Phase 2 in the national Software & Artificial Intelligence competition track.",
+        link: "/assets/certificates/mcit-digitopia-2025.png",
       },
     ],
   },
   {
-    domain: "Developer Foundations & Design",
-    icon: <Code className="w-5 h-5 text-purple-400" />,
+    domain: "Cloud, Problem Solving & Mentorship",
+    icon: <Cloud className="w-5 h-5 text-emerald-400" />,
     items: [
       {
-        title: "Enterprise Design Thinking Practitioner",
-        issuer: "IBM",
-        description: "Acquired design thinking methodologies for building user-centric software products.",
-        link: "/assets/certificates/ibm-design-thinking.pdf",
+        title: "AWS Academy Graduate — ML Foundations",
+        issuer: "Amazon Web Services (AWS)",
+        description: "20-hour training badge (Mar 12, 2026) covering Amazon SageMaker pipelines and managed ML architectures.",
+        link: "/assets/certificates/aws-machine-learning-foundations.pdf",
       },
       {
-        title: "Problem Solving (Basic)",
+        title: "AWS Academy Graduate — Generative AI Foundations",
+        issuer: "Amazon Web Services (AWS)",
+        description: "12-hour training badge (Mar 12, 2026) covering foundation models, prompting, and cloud GenAI patterns.",
+        link: "/assets/certificates/aws-generative-ai.pdf",
+      },
+      {
+        title: "Problem Solving (Basic) & SQL (Basic)",
         issuer: "HackerRank",
-        description: "Verified problem-solving algorithms, data structures, and script execution logic.",
+        description: "Verified coding and relational query assessments covering algorithms, joins, and SQL logic.",
         link: "/assets/certificates/hackerrank-problem-solving-basic.pdf",
       },
       {
-        title: "SQL (Basic)",
-        issuer: "HackerRank",
-        description: "Verified relational database queries, table joins, and SQL execution logic.",
-        link: "/assets/certificates/hackerrank-sql-basic.pdf",
+        title: "Certificate of Appreciation — Course Assistant",
+        issuer: "IEEE MIU Student Branch",
+        description: "Recognized for delivering 20+ training hours in the Arduino and Python junior engineering program.",
+        link: "/assets/certificates/ieee-miu-ta-appreciation.png",
       },
     ],
   },
@@ -93,7 +117,7 @@ export default function CertificationsSection() {
         <SectionHeader
           id="certifications"
           title="Verified Credentials"
-          desc="Professional certifications validating systems architecture and artificial intelligence competency."
+          desc="Official certifications and international hackathon recognitions validating AI, cloud, cybersecurity, and systems engineering."
           className="mb-16 mt-0"
         />
 
@@ -119,7 +143,7 @@ export default function CertificationsSection() {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {group.items.map((cert, certIdx) => (
                   <div
                     key={certIdx}

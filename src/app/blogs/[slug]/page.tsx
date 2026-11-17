@@ -17,8 +17,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = getBlogPost(params.slug);
   return {
-    title: `${post.metadata.title} | Portfolio`,
+    title: post.metadata.title,
     description: post.metadata.summary,
+    alternates: {
+      canonical: `/blogs/${params.slug}`,
+    },
   };
 }
 

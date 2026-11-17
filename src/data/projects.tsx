@@ -1,29 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { TypographyH3, TypographyP } from "@/components/ui/typography";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Bot } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { RiNextjsFill, RiNodejsFill, RiReactjsFill } from "react-icons/ri";
 import {
+  SiArduino,
   SiCplusplus,
   SiDocker,
   SiExpress,
+  SiFastapi,
   SiFirebase,
   SiFlask,
   SiJavascript,
+  SiLaravel,
   SiMongodb,
   SiMysql,
+  SiOpencv,
   SiPhp,
   SiPostgresql,
   SiPython,
+  SiPytorch,
+  SiRedis,
+  SiScikitlearn,
   SiSocketdotio,
+  SiSqlite,
   SiStreamlit,
   SiTailwindcss,
   SiThreedotjs,
   SiTypescript,
-  SiArduino,
 } from "react-icons/si";
-import { TbBrandFramerMotion } from "react-icons/tb";
+import { TbBrandCSharp, TbBrandFramerMotion, TbCoffee } from "react-icons/tb";
 
 const ProjectsLinks = ({ live, repo }: { live?: string; repo?: string }) => {
   return (
@@ -64,6 +71,7 @@ export type Skill = {
   fg: string;
   icon: ReactNode;
 };
+
 const PROJECT_SKILLS = {
   react: {
     title: "React.js",
@@ -89,6 +97,18 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiCplusplus />,
   },
+  csharp: {
+    title: "C# (.NET 8)",
+    bg: "black",
+    fg: "white",
+    icon: <TbBrandCSharp />,
+  },
+  java: {
+    title: "Java",
+    bg: "black",
+    fg: "white",
+    icon: <TbCoffee />,
+  },
   python: {
     title: "Python",
     bg: "black",
@@ -113,6 +133,12 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiPhp />,
   },
+  laravel: {
+    title: "Laravel 11",
+    bg: "black",
+    fg: "white",
+    icon: <SiLaravel />,
+  },
   mysql: {
     title: "MySQL",
     bg: "black",
@@ -125,6 +151,18 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiPostgresql />,
   },
+  sqlite: {
+    title: "SQLite3",
+    bg: "black",
+    fg: "white",
+    icon: <SiSqlite />,
+  },
+  redis: {
+    title: "Redis",
+    bg: "black",
+    fg: "white",
+    icon: <SiRedis />,
+  },
   mongo: {
     title: "MongoDB",
     bg: "black",
@@ -136,6 +174,12 @@ const PROJECT_SKILLS = {
     bg: "black",
     fg: "white",
     icon: <SiExpress />,
+  },
+  fastapi: {
+    title: "FastAPI",
+    bg: "black",
+    fg: "white",
+    icon: <SiFastapi />,
   },
   firebase: {
     title: "Firebase",
@@ -156,7 +200,7 @@ const PROJECT_SKILLS = {
     icon: <SiSocketdotio />,
   },
   tailwind: {
-    title: "Tailwind",
+    title: "Tailwind CSS",
     bg: "black",
     fg: "white",
     icon: <SiTailwindcss />,
@@ -191,13 +235,45 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiArduino />,
   },
+  pytorch: {
+    title: "PyTorch / ONNX",
+    bg: "black",
+    fg: "white",
+    icon: <SiPytorch />,
+  },
+  sklearn: {
+    title: "Scikit-Learn",
+    bg: "black",
+    fg: "white",
+    icon: <SiScikitlearn />,
+  },
+  opencv: {
+    title: "OpenCV / YOLO",
+    bg: "black",
+    fg: "white",
+    icon: <SiOpencv />,
+  },
+  ollama: {
+    title: "Ollama",
+    bg: "black",
+    fg: "white",
+    icon: <Bot className="w-4 h-4" />,
+  },
 };
+
+export type VisualType =
+  | "screenshot"
+  | "architecture-illustration"
+  | "conceptual-preview"
+  | "poster";
 
 export type Project = {
   id: string;
   category: string;
   title: string;
   src: string;
+  visualType?: VisualType;
+  visualLabel?: string;
   screenshots: string[];
   skills: { frontend: Skill[]; backend: Skill[] };
   content: React.ReactNode | any;
@@ -209,103 +285,145 @@ export type Project = {
   approach?: string;
   architectureDesc?: string;
   implementationDesc?: string;
+  contribution?: string;
   securityConsiderations?: string;
+  limitations?: string;
   features?: string[];
   impact?: string;
 };
 
+export const FLAGSHIP_PROJECT_IDS = [
+  "flare-ai",
+  "revenant",
+  "ece-labs",
+  "soc-ai",
+  "talky",
+];
+
 const projects: Project[] = [
   {
-    id: "soc-ai",
-    category: "AI + Cybersecurity",
-    title: "SOC AI Omega",
-    src: "/assets/projects-screenshots/soc-ai/landing.png",
+    id: "flare-ai",
+    category: "NASA Space Apps 2026",
+    title: "FLARE AI",
+    src: "/assets/projects-screenshots/flare-ai/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
     screenshots: ["landing.png"],
     skills: {
       frontend: [
+        PROJECT_SKILLS.next,
         PROJECT_SKILLS.react,
+        PROJECT_SKILLS.ts,
         PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.framerMotion,
       ],
       backend: [
         PROJECT_SKILLS.python,
-        PROJECT_SKILLS.flask,
-        PROJECT_SKILLS.docker,
+        PROJECT_SKILLS.fastapi,
+        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.sklearn,
       ],
     },
-    live: "",
-    github: "https://github.com/karimcpp110/SOC_ANALYSIS_AI",
-    shortDescription: "AI-assisted SOC monitoring platform achieving 99% threat detection accuracy.",
-    problem: "Traditional Security Operations Center (SOC) workflows suffer from manual threat analysis overload, leading to high triage times and critical detection delays.",
-    architectureDesc: "Packet Monitoring -> ML Classification -> Threat Scoring -> Wazuh Integration -> MITRE ATT&CK Mapping.",
-    implementationDesc: "Designed and implemented a modular classification pipeline utilizing a Scikit-Learn Random Forest model. Telemetry alerts parse dynamically through Sigma Rules and map directly to appropriate MITRE ATT&CK tactics inside a FastAPI backend. Configured automatic Dockerized containment triggers upon high-criticality alert thresholds.",
-    securityConsiderations: "Enforced off-grid local deployment to protect sensitive corporate telemetry from cloud-based leaks. Constructed strict packet signature validation checks on all incoming sniffed packets to prevent buffer overflow attacks on the parsing engine.",
-    impact: "Transformed passive security monitoring into an active containment ecosystem, reducing response latency with 99.2% classification accuracy.",
+    live: "https://flame-ai-six.vercel.app",
+    github: "https://github.com/karim-wael/flame-ai",
+    shortDescription:
+      "Microgravity combustion knowledge prototype ingesting 1,157 historical NASA PSI runs and 10,079 measurements with domain-gated ranking and verbatim RAG.",
+    problem:
+      "Historical NASA Physical Sciences Informatics (PSI) microgravity combustion datasets span heterogeneous CSVs, workbooks, unit scales, and PDF reports—causing invalid cross-domain comparisons and hallucinated AI summaries.",
+    solution:
+      "Co-built an ETL ingestion, domain-gated similarity ranking, and guardrail-enforced scientific RAG prototype tracing measurements and quoted excerpts back to NASA DOIs and ingested file SHA-256 checksums.",
+    architectureDesc:
+      "NASA PSI Archives -> ETL & Provenance Registry (SHA-256, Unit Normalization) -> Domain-Gated Condition Matcher -> Hybrid Lexical/SQL RAG Copilot (TF-IDF + SQLite/PostgreSQL).",
+    contribution:
+      "Co-engineered as part of 6-member Team The Fireflies (with Zeiad Abogebba and teammates); authored backend ingestion/RAG optimization commits (including commit 056eb60 fixing ORM N+1 hydration) and Next.js frontend integration.",
+    implementationDesc:
+      "Ingested and normalized 1,157 historical experiment runs, 10,079 telemetry measurements, 128 SHA-256-checksummed archive files, and 1,312 knowledge chunks (21 documents) across 6 historical NASA PSI investigations. Refactored SQLAlchemy joinedload queries into scalar projections + top-K selectinload in rag.py/main.py to eliminate Render 502 OOM crashes (~43x faster local assistant retrieval in dev testing).",
+    securityConsiderations:
+      "Enforced G1–G7 & D1–D6 domain guardrails isolating Earth 1g baselines from 0g rankings, explicit Moon/Mars partial-gravity gap notices, verbatim quote verification against source chunks, and transparent missing_reason flags.",
+    limitations:
+      "POST /api/ingestion/jobs currently lacks authentication enforcement in main.py despite defining INGESTION_API_TOKEN in config.py; CORS uses allow_origins=['*']; active SQLite fallback relies on TF-IDF lexical indexing rather than live neural pgvector embeddings; backend test suite currently contains 1 smoke test; 43x latency ratio reflects internal dev testing without a committed benchmark log.",
+    impact:
+      "Earned official 2026 NASA Space Apps 'Galactic Problem Solver' project completion recognition and deployed live across Vercel + Render.",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            AI-Powered Threat Detection & Autonomous Remediation
+            Fire &amp; Low-Gravity Archive Research Engine (NASA Space Apps 2026)
           </TypographyP>
           <TypographyP className="font-mono">
-            A real-time Security Operations Center dashboard with AI-driven
-            threat analysis, automated incident response, and a Hyper-Drive
-            autonomous workflow engine. Integrates scikit-learn ML models for
-            anomaly detection and features a premium glassmorphism HUD interface.
+            FLARE AI turns decades of fragmented NASA Physical Sciences Informatics (PSI) microgravity
+            combustion experiments into a source-grounded scientific decision-support workspace built by Team
+            The Fireflies for the 2026 Flame in Freefall challenge.
           </TypographyP>
-          <ProjectsLinks repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Features</TypographyH3>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <TypographyH3 className="my-4 mt-8">Core Modules</TypographyH3>
           <ul className="list-disc ml-6">
-            <li className="font-mono">Real-time threat feed with ML-based severity scoring</li>
-            <li className="font-mono">Autonomous &quot;Hyper-Drive&quot; mode for zero-touch remediation</li>
-            <li className="font-mono">Interactive network topology visualization</li>
-            <li className="font-mono">Incident timeline with automated forensics reports</li>
+            <li className="font-mono">Overview Dashboard &amp; Catalogue across 6 NASA PSI investigations (1,157 runs, 10,079 measurements)</li>
+            <li className="font-mono">Domain-Gated Experiment Explorer &amp; Condition Matcher (O₂ %, kPa, cm/s airflow)</li>
+            <li className="font-mono">Guardrail-Enforced Hybrid RAG Copilot with verbatim quote verification badges</li>
+            <li className="font-mono">Provenance &amp; Lineage Inspector tracing DOIs, unit conversions, and SHA-256 checksums</li>
           </ul>
         </div>
       );
     },
   },
   {
-    id: "chiggabot",
-    category: "Local AI Agents",
-    title: "Chiggabot",
-    src: "/assets/projects-screenshots/chiggabot/landing.png",
+    id: "revenant",
+    category: "Endpoint Security + AI",
+    title: "Project Revenant",
+    src: "/assets/projects-screenshots/revenant/landing.png",
+    visualType: "poster",
+    visualLabel: "Conference Poster Summary (Loopback Sandbox Evaluation)",
     screenshots: ["landing.png"],
     skills: {
-      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.js],
+      frontend: [
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.tailwind,
+      ],
       backend: [
+        PROJECT_SKILLS.csharp,
         PROJECT_SKILLS.python,
-        PROJECT_SKILLS.flask,
-        PROJECT_SKILLS.docker,
+        PROJECT_SKILLS.fastapi,
+        PROJECT_SKILLS.pytorch,
+        PROJECT_SKILLS.postgres,
       ],
     },
     live: "",
-    shortDescription: "Fully local AI agent with RAG, code execution, and multi-language runtime.",
-    problem: "Integrating cloud-based LLM APIs compromises codebase privacy, creates recursive API subscription bills, and increases single-point failure dependencies.",
-    architectureDesc: "User Query -> Embedding Model -> Vector Database -> Local LLM -> Response Generation & Execution Sandbox.",
-    implementationDesc: "Built an entirely local agent engine powered by Ollama local models. Configured a custom Retrieval-Augmented Generation (RAG) pipeline leveraging FAISS and Chroma vector stores for codebase scanning. Added local text-to-speech voice synthesis and a secure execution sandbox using Docker containers.",
-    securityConsiderations: "Script evaluation occurs in an isolated Docker runtime environment with capped resources and blocked networking, preventing malicious code from accessing the host OS filesystem or local network.",
-    impact: "Created a private, zero-subscription development assistant completely independent of internet access or third-party servers.",
+    shortDescription:
+      "Co-engineered AI intrusion-detection and self-healing endpoint recovery prototype (.NET 8 agent, FastAPI, mTLS, Ed25519 commands, ONNX models, write-only vault).",
+    problem:
+      "Traditional antivirus suites detect ransomware after files are encrypted and store recovery backups locally (VSS), where attackers delete them via vssadmin.",
+    solution:
+      "Co-engineered a two-plane prototype decoupling detection authority from the endpoint: a Windows .NET 8 worker streams telemetry over mTLS and pushes pre-change files to an out-of-band write-only vault that cannot list, read, or delete existing backups.",
+    architectureDesc:
+      "Protected Windows Endpoint (.NET 8 Agent + Ed25519 Verifier + Write-Only Vault Push) --[mTLS]--> Management Authority (FastAPI + 3 ONNX Detectors + Reversible Policy Engine + Hash-Chained Audit DB + React 19 Console).",
+    contribution:
+      "Multiple Contributions within the MIU Software Engineering team (with collaborator Motrk12): co-engineered and integrated components across the detection, recovery, backend control, and documentation layers.",
+    implementationDesc:
+      "Implemented subsystems include the Windows .NET 8 agent with BouncyCastle Ed25519 signature verification (SignedCommandVerifier.cs), FastAPI mTLS backend with 3 ONNX models trained on real datasets (EMBER2024 static PE, RanSAP behavioral sequences, CIC-IDS2017 network flows), write-only 403-enforced vault (revenant_vault), semi_auto reversibility guardrails, hash-chained audit logs, React 19 operator console, and read-only Ollama incident explainer.",
+    securityConsiderations:
+      "Enforces Mutual TLS client certificates on agent ingestion, Ed25519 signature checks before command execution, role-segregated write-only vault bearer tokens (HTTP 403 on agent read/delete), SHA-256 hash-chained audit entries, and critical Windows process allow-listing (e.g., lsass.exe).",
+    limitations:
+      "The 0.476s median latency (80/80 restored files, 110/110 hash-chain checks) was measured on a single laptop over loopback using a Python test harness (make e2e) with CommandExecutor running in SandboxMode=true (returning simulated sandbox responses rather than live netsh/Process.Kill) and bypassing the .NET agent polling loop. Two-machine LAN router benchmarks remain future work, and the appliance-style UI console redesign is listed as planned/not started in docs/planned-features.md.",
+    impact:
+      "Sandbox e2e suite (10 loopback runs) recorded 0.476s median recovery, 80/80 byte-identical SHA-256 restores, and 110/110 verified hash-chain entries; 213 backend/vault pytest cases pass.",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Zero Subscriptions. Full Intelligence. Local Hardware.
+            Autonomous AI Intrusion Detection &amp; Self-Healing Recovery
           </TypographyP>
           <TypographyP className="font-mono">
-            Chiggabot is a high-performance, subscription-free AI agent running
-            entirely on local hardware. Powered by Ollama with real-time web
-            access via RAG, it features an unfiltered personality, text-to-speech
-            capabilities, and a custom knowledge pipeline. No cloud dependency,
-            no API costs, no limits.
+            Project Revenant closes the loop between detection and recovery: ransomware cannot destroy
+            backups it only has write-once permission to submit before modification.
           </TypographyP>
           <ProjectsLinks />
-          <TypographyH3 className="my-4 mt-8">Capabilities</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Verified Architecture &amp; Guardrails</TypographyH3>
           <ul className="list-disc ml-6">
-            <li className="font-mono">Local LLM inference via Ollama — zero subscription cost</li>
-            <li className="font-mono">Real-time web search and RAG knowledge augmentation</li>
-            <li className="font-mono">Text-to-speech with personality-driven voice synthesis</li>
-            <li className="font-mono">Custom prompt engineering for unfiltered responses</li>
+            <li className="font-mono">Native C# / .NET 8 Windows Worker Service with FileSystemWatcher, WMI, and network flow capture</li>
+            <li className="font-mono">Three ONNX classifiers: Static PE (EMBER2024), Behavioral GRU (RanSAP), Network Flow (CIC-IDS2017)</li>
+            <li className="font-mono">Out-of-band Append-Only Vault with SHA-256 integrity verification on recovery</li>
+            <li className="font-mono">mTLS + Ed25519 signed commands + strict reversible-vs-destructive approval gates</li>
           </ul>
         </div>
       );
@@ -313,9 +431,11 @@ const projects: Project[] = [
   },
   {
     id: "talky",
-    category: "Distributed Systems",
-    title: "TALKY",
+    category: "Systems & Networking",
+    title: "TALKY (WhatsDown)",
     src: "/assets/projects-screenshots/talky/landing.png",
+    visualType: "screenshot",
+    visualLabel: "Application Login Interface Screenshot",
     screenshots: ["landing.png"],
     skills: {
       frontend: [
@@ -326,45 +446,170 @@ const projects: Project[] = [
       ],
       backend: [
         PROJECT_SKILLS.cpp,
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.socketio,
+        PROJECT_SKILLS.sqlite,
         PROJECT_SKILLS.docker,
       ],
     },
     live: "",
-    shortDescription: "High-performance messaging system built with React + C++ and WebSocket architecture.",
-    problem: "Real-time communication platforms require low-latency packet routing, high concurrency handling, and strict user privacy configurations.",
-    architectureDesc: "Client -> Node.js Authentication Layer -> Socket.io Bridge -> C++ WebSocket Server -> Thread Pool Processing.",
-    implementationDesc: "Designed a hybrid backend routing high-throughput binary messages via a C++ WebSocket server using custom thread pools and a non-blocking event loops, while routing standard REST login requests through a Node.js Express server.",
-    securityConsiderations: "Implemented a custom key-exchange protocol ensuring end-to-end encryption. Built structural bounds checks on incoming binary websocket packets to prevent buffer overflow attacks in the C++ layer.",
-    impact: "Delivered sub-millisecond packet transmission infrastructure capable of handling concurrent client nodes with absolute privacy.",
+    github: "https://github.com/karim-wael/whatsdown",
+    shortDescription:
+      "Custom multithreaded C++ HTTP/WebSocket messaging platform with SQLite3 persistence, JWT auth, and ephemeral Ghost privacy mode.",
+    problem:
+      "Understanding low-level network framing, concurrency locks, and ephemeral persistence without relying on high-level managed WebSocket abstractions.",
+    solution:
+      "Built a custom C++ TCP/HTTP & RFC 6455 WebSocket server paired with a React 19 glassmorphism client, JWT authentication, and a background expiry reaper thread.",
+    architectureDesc:
+      "React 19 + Vite Client <--[RFC 6455 WebSocket / REST]--> C++ ChatServer (httplib + WSManager + ChatRouter + CryptoUtils) <--> SQLite3 DatabaseManager.",
+    contribution:
+      "Individual project designed and implemented end to end across the C++ server core, SQLite3 schema/manager, and React 19 UI.",
+    implementationDesc:
+      "Implemented raw WinSock2/POSIX TCP listening, RFC 6455 SHA-1/Base64 handshake and frame masking in WSManager.h, mutex-synchronized broadcast rooms in ChatServer.cpp, message editing, typing/presence indicators, and a background std::thread pruning expired ephemeral messages every 10 seconds.",
+    securityConsiderations:
+      "Enforces JWT session tokens, SHA-256 password hashing, Stealth/Ghost mode bypassing SQLite persistence, configurable TTL auto-burn deletion, and parameterized SQLite queries.",
+    limitations:
+      "Developed without formal multi-client load-testing or throughput/latency benchmarks; production TLS termination requires an external reverse proxy.",
+    impact:
+      "Delivered a complete custom C++ WebSocket & HTTP server paired with a Dockerized React 19 messaging client.",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Enterprise Messaging = WhatsApp + Telegram, Built From Scratch
+            Custom C++ Real-Time Messaging Core + React 19 Client
           </TypographyP>
           <TypographyP className="font-mono">
-            TALKY is an enterprise-grade, high-performance hybrid messaging
-            platform combining the best of WhatsApp and Telegram. Built with
-            a C++ backend for raw speed and a React frontend for premium UI,
-            it features end-to-end encryption, real-time WebSocket
-            communication, and a security-first architecture.
+            TALKY (WhatsDown) pairs a custom multithreaded C++ HTTP/WebSocket server (`httplib.h`,
+            `WSManager`, SQLite3) with a modern React glassmorphism interface for fast, privacy-focused communication.
           </TypographyP>
           <ProjectsLinks repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Architecture</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Engineering Highlights</TypographyH3>
           <ul className="list-disc ml-6">
-            <li className="font-mono">C++ WebSocket server for sub-millisecond message routing</li>
-            <li className="font-mono">React frontend with real-time state synchronization</li>
-            <li className="font-mono">End-to-end encryption with custom key exchange protocol</li>
-            <li className="font-mono">Dockerized microservice deployment pipeline</li>
+            <li className="font-mono">Custom C++ WebSocket manager (`WSManager`) for live presence, typing, and message sync</li>
+            <li className="font-mono">Ephemeral Ghost Mode and disappearing messages with automated expiry purge</li>
+            <li className="font-mono">JWT authentication, SHA-256 hashing, and SQLite3 persistent storage</li>
+            <li className="font-mono">Message editing, contextual replies, reactions, and Dockerized deployment</li>
           </ul>
-          <TypographyH3 className="my-4 mt-8">Key Features</TypographyH3>
+        </div>
+      );
+    },
+  },
+  {
+    id: "ece-labs",
+    category: "Enterprise Web Systems",
+    title: "ECE Lab Management",
+    src: "/assets/projects-screenshots/ece-labs/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.js,
+      ],
+      backend: [
+        PROJECT_SKILLS.laravel,
+        PROJECT_SKILLS.php,
+        PROJECT_SKILLS.mysql,
+      ],
+    },
+    live: "",
+    shortDescription:
+      "Concurrency-safe university lab reservation and seeded 609-instrument inventory platform co-engineered for MIU ECE with Zeiad Abogebba.",
+    problem:
+      "Shared university hardware labs suffer from workstation overbooking, project-group monopolies on specialized benches/instruments, and race conditions during simultaneous student registrations.",
+    solution:
+      "Co-engineered a Laravel 11 + Laravel Reverb platform using triple pessimistic locking (Laboratory, Workstation, Instrument `lockForUpdate()`), 50% group quotas, HMAC QR check-in, and real-time bench updates.",
+    architectureDesc:
+      "Blade + Alpine.js + Tailwind v4 UI <--[Laravel Reverb WebSockets]--> Laravel 11 Domain Services (BookingService, RegistrationService) --> MySQL/SQLite (lockForUpdate() Transactions) + Filament v3.2 Admin.",
+    contribution:
+      "Co-engineered with Zeiad Abogebba (13 commits by Zeiad Abogebba, 4 commits by Karim Wael): authored transactional concurrency locking, strike/walk-in rules, labs_inventory.json import/Instrument seeder & API, and Reverb grid update events.",
+    implementationDesc:
+      "Built on Laravel 11.31, PHP 8.2, Filament v3.2, Tailwind v4, and Alpine.js. Implements atomic booking transactions locking Laboratory, Workstation, and Instrument rows, weekly 2-slot student quotas, configurable group anti-monopoly caps (default 50%), 15-minute walk-in reclamation, and InstrumentSeeder importing 609 normalized records from 8 MIU ECE lab spreadsheets.",
+    securityConsiderations:
+      "Prevents double-booking race conditions via database row locks and active-slot unique keys; secures check-ins via APP_KEY-signed SHA-256 HMAC QR tokens, absentee strike suspensions, and @miuegypt.edu.eg OTP/Google SSO domain enforcement.",
+    limitations:
+      "The 609 instrument records were imported and normalized from 8 department Excel files into labs_inventory.json rather than manually entered one-by-one; calibration timestamps remain nullable/unpopulated; collaborator repo zeiadabogebba/ECE-LabsWebsite is private.",
+    impact:
+      "Verified booking invariants, walk-in reclamation, blackouts, and API routes across 66 passing PHPUnit test cases (3,942 assertions).",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Concurrency-Safe Academic Lab &amp; Hardware Reservation System
+          </TypographyP>
+          <TypographyP className="font-mono">
+            Co-engineered for the MIU Electronics &amp; Communication Engineering Department using Laravel 11,
+            Laravel Reverb WebSockets, Filament v3.2, Alpine.js, and Tailwind CSS v4.
+          </TypographyP>
+          <ProjectsLinks />
+          <TypographyH3 className="my-4 mt-8">Key Systems Features</TypographyH3>
           <ul className="list-disc ml-6">
-            <li className="font-mono">Real-time messaging with typing indicators and read receipts</li>
-            <li className="font-mono">Group chats with admin controls and media sharing</li>
-            <li className="font-mono">Dark/light theme with glassmorphism UI</li>
-            <li className="font-mono">REST API for user management and authentication</li>
+            <li className="font-mono">Parent-row pessimistic locking (`Laboratory::lockForUpdate()`) &amp; 50% anti-monopoly group limits</li>
+            <li className="font-mono">Live U-shaped bench status streaming over Laravel Reverb + Echo WebSockets</li>
+            <li className="font-mono">SHA-256 HMAC QR bench check-in, 15-min walk-in reclamation, and absentee strike engine</li>
+            <li className="font-mono">609 real department hardware instruments tracked across labs and Filament admin panels</li>
+          </ul>
+        </div>
+      );
+    },
+  },
+  {
+    id: "soc-ai",
+    category: "AI + Cybersecurity",
+    title: "SOC AI Omega V3++",
+    src: "/assets/projects-screenshots/soc-ai/landing.png",
+    visualType: "screenshot",
+    visualLabel: "Application Dashboard Screenshot (Local Server Preview)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.js,
+        PROJECT_SKILLS.tailwind,
+      ],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.fastapi,
+        PROJECT_SKILLS.sklearn,
+        PROJECT_SKILLS.docker,
+      ],
+    },
+    live: "",
+    github: "https://github.com/karim-wael/SOC_ANALYSIS_AI",
+    shortDescription:
+      "SIEM/SOAR prototype with FastAPI WebSockets, Random Forest scoring, Zero-Leak PII sanitizer, 50 Sigma YAML rules, and D3.js topology.",
+    problem:
+      "Security operations workflows suffer from alert fatigue, disjointed telemetry views, and risk of leaking internal IPs/emails when sending alerts to external LLM APIs.",
+    solution:
+      "Upgraded a Flask prototype into a modular FastAPI SOC command center featuring async triage, deterministic PII redaction, 50 YAML Sigma rules, and YAML-driven SOAR playbooks.",
+    architectureDesc:
+      "Telemetry Ingestion -> Zero-Leak PII Sanitizer -> Async Triage (Gemini -> Ollama -> Heuristic Table + Random Forest) -> MITRE ATT&CK / 50 Sigma YAML Rules -> D3.js Topology & Simulated SOAR.",
+    contribution:
+      "Individual creator and lead developer across the FastAPI backend, PII sanitizer, Sigma rule loader, and D3.js/Chart.js frontend dashboard.",
+    implementationDesc:
+      "Implemented multi-tenant JWT RBAC routers, WebSocket live streaming (/ws/live), SanitizerService masking RFC 1918 IPs/emails/JWTs, 50 Sigma YAML rules (sig_001–sig_050), 6 YAML SOAR playbooks, Scikit-Learn Random Forest scoring, and D3.js topology visualization.",
+    securityConsiderations:
+      "SanitizerService masks RFC 1918 private IPs, internal host domains (*.corp, *.internal), corporate emails, and JWT/Bearer tokens prior to external LLM narrative prompts; enforces multi-tenant org_id isolation.",
+    limitations:
+      "SOAR containment actions and firewall blocking default to simulation_mode (simulated_firewall_api); wildcard CORS is enabled for local development; accuracy claims from early prototypes were omitted due to simulated telemetry inputs.",
+    impact:
+      "Consolidated multi-tier LLM/heuristic triage, Sigma detection rules, and interactive D3.js topology into a single Dockerizable FastAPI SOC workspace.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            AI-Powered SIEM, SOAR &amp; Threat Hunting Command Center
+          </TypographyP>
+          <TypographyP className="font-mono">
+            SOC AI Omega V3++ unifies real-time WebSocket alert streaming, ML-based anomaly triage,
+            Sigma YAML rules, MITRE ATT&amp;CK tactic heatmaps, and D3.js network topology graphs inside a
+            multi-tenant FastAPI architecture.
+          </TypographyP>
+          <ProjectsLinks repo={this.github} />
+          <TypographyH3 className="my-4 mt-8">Capabilities</TypographyH3>
+          <ul className="list-disc ml-6">
+            <li className="font-mono">Multi-tier AI Attack Narrative engine (Gemini 1.5, local Ollama, and heuristic fallback)</li>
+            <li className="font-mono">Zero-Leak PII telemetry sanitizer before external model inference</li>
+            <li className="font-mono">Live MITRE ATT&amp;CK heatmap, Sigma rule engine, and threat-hunting workspace</li>
+            <li className="font-mono">Simulated SOAR playbooks with multi-tenant JWT RBAC and immutable audit logs</li>
           </ul>
         </div>
       );
@@ -375,38 +620,104 @@ const projects: Project[] = [
     category: "Systems Engineering",
     title: "IEEE MIU Portal",
     src: "/assets/projects-screenshots/ieee-portal/landing.png",
+    visualType: "screenshot",
+    visualLabel: "Application Admin Dashboard Screenshot",
     screenshots: ["landing.png"],
     skills: {
       frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.js, PROJECT_SKILLS.tailwind],
       backend: [PROJECT_SKILLS.php, PROJECT_SKILLS.mysql],
     },
     live: "",
-    github: "https://github.com/karimcpp110/ieee-miu",
-    shortDescription: "Rebuilt a university platform through reverse-engineered architecture and automation.",
-    problem: "Student organizations lack integration options with restrictive university software systems, forcing manual data updates and Excel chaos.",
-    architectureDesc: "Client Browser Requests -> Custom PHP MVC Controller -> Reverse Engineered MIU Endpoint Authentication -> Secure MySQL DB Synchronization.",
-    implementationDesc: "Reverse-engineered university portal network calls to automate verification routines for 100+ members. Rebuilt a custom PHP MVC-lite learning management dashboard to bypass legacy administration blocks.",
-    securityConsiderations: "Secured user credentials by implementing single-session tokens that are never cached on the local disk. Configured parameterized MySQL query bindings to prevent SQL injections.",
-    impact: "Centralized all branch operations into a single platform currently supporting and tracking the lifecycle of over 100 active members efficiently.",
+    shortDescription:
+      "Custom PHP 8.2 MVC branch portal, LMS, automated exam grading, dynamic FPDF certification, and Yony AI companion for IEEE MIU.",
+    problem:
+      "Student organizations rely on fragmented spreadsheets and manual forms, causing lost participant records and slow manual certificate issuance.",
+    solution:
+      "Built a custom PHP 8.2 MVC platform from scratch with automated exam grading, self-healing schema checks, zero-touch FPDF certificates, and QR attendance tracking.",
+    architectureDesc:
+      "Redesigned Portal Views -> Custom PHP 8.2 MVC Controllers -> PDO Singleton + Self-Healing Migrations -> Automated Grading, Email Queue & FPDF Certificate Engine.",
+    contribution:
+      "Lead Architect (16 commits in repo) building the custom MVC core, LMS, FPDF certification, QR attendance, and Yony AI companion; collaborated with Zeiad Abogebba (5 commits) on UI redesign.",
+    implementationDesc:
+      "Engineered custom MVC routing without external CMS frameworks: linked LMS courses with multi-format exams, FPDF verification certificates, SMTP email queue, dynamic form builder, Google Drive gallery sync, and SQLite/MySQL PDO abstractions.",
+    securityConsiderations:
+      "Implemented PDO prepared statements, CSRF form tokens, XSS sanitization, AISecurityGuard output scrubbing, and granular RBAC permissions.",
+    limitations:
+      "Repository (karim-wael/ieeemiu) is private (HTTP 404 publicly); internal security audit flagged git-tracked legacy .env and test script credentials requiring rotation before any public release.",
+    impact:
+      "Unified IEEE MIU Student Branch course delivery, event workflows, and dynamic certification inside one custom web platform.",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            A Complete University Portal — Reverse-Engineered & Rebuilt
+            Custom PHP MVC Branch Ecosystem &amp; LMS Platform
           </TypographyP>
           <TypographyP className="font-mono">
-            Built from scratch after reverse-engineering the Misr International
-            University&apos;s official portal. Features a Learning Management
-            System, automated grading pipeline, event management, and
-            member dashboards. Serves the entire IEEE MIU student branch.
+            Engineered from scratch for the IEEE MIU Student Branch—combining course delivery, automated
+            multi-format exams, dynamic PDF certificates, custom event forms, and role-based governance.
           </TypographyP>
-          <ProjectsLinks repo={this.github} />
+          <ProjectsLinks />
           <TypographyH3 className="my-4 mt-8">Features</TypographyH3>
           <ul className="list-disc ml-6">
-            <li className="font-mono">Full LMS with course management and automated grading</li>
-            <li className="font-mono">Member dashboard with event registration and tracking</li>
-            <li className="font-mono">Admin panel with analytics and content management</li>
-            <li className="font-mono">Responsive design serving 100+ active members</li>
+            <li className="font-mono">Custom LMS with linked assessments (MCQ, matching, short answer) and auto-grading</li>
+            <li className="font-mono">Zero-touch FPDF certificate generation and automated conditional email triggers</li>
+            <li className="font-mono">No-code dynamic form builder, Google Drive gallery importer, and audit logs</li>
+            <li className="font-mono">Self-healing database schema checks and strict RBAC access matrix</li>
+          </ul>
+        </div>
+      );
+    },
+  },
+  {
+    id: "chiggabot",
+    category: "Local AI Setup Kit",
+    title: "Chiggabot",
+    src: "/assets/projects-screenshots/chiggabot/landing.png",
+    visualType: "conceptual-preview",
+    visualLabel: "Conceptual UI Illustration (Not a Live Application Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [],
+      backend: [
+        PROJECT_SKILLS.ollama,
+        PROJECT_SKILLS.docker,
+      ],
+    },
+    live: "",
+    shortDescription:
+      "Windows automation & model provisioning kit launching 8 quantized Ollama LLMs alongside Dockerized Open WebUI.",
+    problem:
+      "Setting up local quantized LLMs alongside a browser chat interface on Windows involves repetitive service startup, Docker volume bindings, and manual model pulls.",
+    solution:
+      "Created Chiggabot_Setup_Kit: batch and PowerShell automation scripts (`launch_agent.bat`, `download_models.ps1`, `create_shortcut.ps1`) that verify or boot Ollama, launch the `open-webui` Docker container, pull 8 quantized models, and open Edge in desktop app mode.",
+    architectureDesc:
+      "launch_agent.bat + download_models.ps1 -> Local Ollama Server (:11434, 8 Quantized Models) <-> Docker Container (ghcr.io/open-webui/open-webui:main on :8081) -> Edge App Mode UI.",
+    contribution:
+      "Individual utility creator writing the Windows `.bat` launcher, PowerShell model-puller, and shortcut automation scripts.",
+    implementationDesc:
+      "Automates pulling 8 Ollama models (`tinyllama`, `phi3:mini`, `deepseek-r1:1.5b/14b`, `qwen2.5-coder:1.5b/14b`, `dolphin-llama3:8b`, `llava:v1.6-7b`) via `download_models.ps1` and boots Ollama + Open WebUI via `launch_agent.bat` on `http://localhost:8081`.",
+    securityConsiderations:
+      "Runs inference locally via Ollama + Docker Open WebUI without external cloud LLM calls; note that `launch_agent.bat` mounts a host home directory into Open WebUI (`-v C:\\Users\\...:/host_home`), so local filesystem exposure follows Docker volume scope.",
+    limitations:
+      "Chiggabot_Setup_Kit consists solely of Windows provisioning and launcher scripts rather than custom-coded Python FAISS, ChromaDB, or sandboxed compiler software; document Q&A features rely on upstream Open WebUI capabilities.",
+    impact:
+      "Streamlined offline installation and one-click startup of 8 local Ollama models through Dockerized Open WebUI on Windows.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Local Ollama &amp; Open WebUI Provisioning Kit
+          </TypographyP>
+          <TypographyP className="font-mono">
+            Chiggabot (`Chiggabot_Setup_Kit`) automates pulling eight quantized Ollama models and launching
+            a local Dockerized Open WebUI desktop window (`localhost:8081`) via Windows batch and PowerShell scripts.
+          </TypographyP>
+          <ProjectsLinks />
+          <TypographyH3 className="my-4 mt-8">Verified Automation Scope</TypographyH3>
+          <ul className="list-disc ml-6">
+            <li className="font-mono">`download_models.ps1` pulling 8 Ollama models (`tinyllama`, `phi3:mini`, `deepseek-r1`, `qwen2.5-coder`, `dolphin-llama3`, `llava`)</li>
+            <li className="font-mono">`launch_agent.bat` checking/starting `ollama serve` and the `open-webui` Docker container</li>
+            <li className="font-mono">`create_shortcut.ps1` for one-click desktop launch in Edge app mode</li>
           </ul>
         </div>
       );
@@ -414,37 +725,146 @@ const projects: Project[] = [
   },
   {
     id: "probcast",
-    category: "NASA Space Apps Challenge",
-    title: "ProbCast",
+    category: "NASA Space Apps 2025",
+    title: "ProbCast / Aether Climate",
     src: "/assets/projects-screenshots/probcast/landing.png",
+    visualType: "screenshot",
+    visualLabel: "Aether Climate Dashboard Interface Screenshot",
     screenshots: ["landing.png"],
     skills: {
-      frontend: [PROJECT_SKILLS.streamlit],
-      backend: [PROJECT_SKILLS.python],
+      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.streamlit],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.fastapi],
     },
     live: "",
-    github: "https://github.com/karimcpp110/ProbCast",
-    problem: "Event organizers lack localized, actionable environmental risk data from complex satellite datasets.",
-    solution: "Transformed NASA POWER API data into a simple probability forecast for global coordinates.",
+    github: "https://github.com/karim-wael/ProbCast",
+    shortDescription:
+      "NASA Space Apps Oct 2025 Galactic Problem Solver climate prototype, later modernized into the FastAPI + Leaflet Aether Climate Dashboard.",
+    problem:
+      "Event organizers and agricultural planners lack accessible, localized weather risk probabilities derived from scientific NASA Earth observation APIs.",
+    solution:
+      "Built ProbCast during the October 4–5, 2025 NASA Space Apps Challenge using NASA POWER telemetry, and later modernized it into Aether Climate Dashboard with FastAPI, Chart.js, and Leaflet.js.",
+    architectureDesc:
+      "Geolocation / Region Query -> FastAPI NASA POWER Proxy (120s TTL Cache + Fallback) -> Leaflet.js Interactive Probability Map + Chart.js Trends.",
+    contribution:
+      "Technical Team Lead for 4-member Team Moon Walkers during NASA Space Apps Oct 2025, and author of the subsequent Aether Climate FastAPI + Leaflet evolution.",
+    implementationDesc:
+      "Led Team Moon Walkers (Oct 4–5, 2025) to ship the initial Streamlit + NASA POWER prototype, then built Aether Climate (`server/main.py` FastAPI proxy querying NASA POWER `T2M, PRECTOTCORR, RH2M, WS10M` with 120s TTL caching, Leaflet `1.9.4`, and Chart.js analytics).",
+    securityConsiderations:
+      "Server-side FastAPI proxy avoids exposing third-party requests directly from static scripts and applies async 4.0s HTTPX request timeouts.",
+    limitations:
+      "Includes a deterministic synthetic fallback weather generator when external NASA POWER API queries fail or time out (`server/main.py`); CORS allows `*` in local prototype config.",
+    impact:
+      "Earned official October 2025 NASA International Space Apps Challenge 'Galactic Problem Solver' project completion recognition.",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Technical Team Lead @ Team Moon Walkers
+            Technical Team Lead @ Team Moon Walkers (NASA Space Apps 2025)
           </TypographyP>
           <TypographyP className="font-mono">
-            Developed as the Technical Team Lead in the 2024 NASA Space Apps Challenge (independent of IEEE).
-            ProbCast transforms NASA POWER API datasets into actionable rainfall probability forecasts and
-            environmental risk assessments for event organizers across any global coordinate.
+            Developed as Technical Team Lead for the October 2025 NASA Space Apps Challenge, earning Galactic
+            Problem Solver recognition—and upgraded into the Aether Climate Dashboard with FastAPI, Leaflet.js, and Chart.js.
           </TypographyP>
           <ProjectsLinks repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Technical Stack</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Technical Evolution</TypographyH3>
           <ul className="list-disc ml-6">
-            <li className="font-mono">Streamlit interactive dashboard with real-time data viz</li>
-            <li className="font-mono">NASA POWER API integration for Earth observation data</li>
-            <li className="font-mono">Probabilistic rainfall modeling with Python scientific stack</li>
-            <li className="font-mono">Geospatial coordinate-based querying system</li>
+            <li className="font-mono">NASA POWER satellite telemetry ingestion (rainfall, temperature, humidity, wind)</li>
+            <li className="font-mono">2025 MVP: Python + Streamlit + Earthdata predictive engine and multilingual advisory</li>
+            <li className="font-mono">2026 Upgrade: FastAPI backend proxy + Leaflet.js probability map + Chart.js glassmorphism UI</li>
           </ul>
+        </div>
+      );
+    },
+  },
+  {
+    id: "humanoid-cv",
+    category: "Computer Vision",
+    title: "Humanoid CV Perception",
+    src: "/assets/projects-screenshots/humanoid-cv/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.opencv, PROJECT_SKILLS.pytorch],
+    },
+    live: "",
+    shortDescription:
+      "Real-time dual-model YOLO + OpenCV perception prototype for simultaneous person counting and raised-hand detection.",
+    problem:
+      "Robotics and smart-classroom prototypes need simultaneous occupancy counting and raised-hand detection from standard webcam video streams.",
+    solution:
+      "Combined two custom-trained Ultralytics YOLO weights (`best_person_v2.pt` and `best_hand.pt`) inside a real-time OpenCV inference and HUD annotation loop.",
+    architectureDesc:
+      "Webcam Stream -> Dual YOLO Inference (Person + Hand Weights) -> Bounding Box Extraction -> Real-Time HUD Counters.",
+    contribution:
+      "Developed the local Python/OpenCV dual-model inference loop and annotation pipeline (`main.py`).",
+    implementationDesc:
+      "Implemented frame-by-frame inference with independent confidence thresholds (`PERSON_CONF`, `HAND_CONF`), PyTorch-to-NumPy bounding box extraction, and live OpenCV HUD occupancy + hand counters.",
+    limitations:
+      "Local prototype without public GitHub hosting or formal precision/recall/FPS benchmark logs across lighting conditions.",
+    impact:
+      "Delivered a functional real-time person-counting and raised-hand detection module ready for humanoid/classroom integration.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Dual-YOLO Real-Time Person &amp; Gesture Perception
+          </TypographyP>
+          <TypographyP className="font-mono">
+            A real-time OpenCV + Ultralytics YOLO computer vision system running dual custom-trained PyTorch
+            models (`best_person_v2.pt` and `best_hand.pt`) to count people and detect raised hands simultaneously.
+          </TypographyP>
+          <ProjectsLinks />
+        </div>
+      );
+    },
+  },
+  {
+    id: "agentic-adk",
+    category: "Agentic AI Systems",
+    title: "Agentic Challenge Suite",
+    src: "/assets/projects-screenshots/agentic-adk/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.fastapi,
+        PROJECT_SKILLS.redis,
+      ],
+    },
+    live: "",
+    github: "https://github.com/AhmedGamal-Gemy/Agentic_AI_Internship",
+    shortDescription:
+      "Collaborative Google ADK + Groq Llama 3.3 70B multi-tool coding challenge generator and Redis-backed intern progress tracker.",
+    problem:
+      "Technical internship cohorts need grounded coding challenges paired with longitudinal tracking of intern submissions and progress summaries.",
+    solution:
+      "Co-built an ADK agent orchestrated over LiteLLM (Groq `llama-3.3-70b-versatile`) with Exa search tool calls, DB/leaderboard integration, and Redis progress history.",
+    architectureDesc:
+      "Google ADK Agent -> Exa Web Search Tool -> Llama 3.3 70B Synthesis -> Parallel Save & Leaderboard Tool + Redis History Store.",
+    contribution:
+      "Intern contributor in the collaborative Agentic AI Training repository (hosted under mentor Ahmed Gamal) working on ADK tool wiring and Redis session tracking.",
+    implementationDesc:
+      "Implemented tool functions (`exa_search`, `save_to_database`, `push_to_leaderboard`) and Redis-backed intern progress tracking (`update_intern_history`, `get_intern_history`, `summarize_progress`) during the 2026 Agentic AI Internship.",
+    limitations:
+      "Collaborative training project hosted in an external mentor repository (`AhmedGamal-Gemy/Agentic_AI_Internship`); requires external Groq, Exa, and Redis API/service credentials at runtime.",
+    impact:
+      "Automated grounded coding challenge authoring and multi-push intern progress summarization during technical workshops.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Multi-Tool Google ADK Agent &amp; Redis Progress Memory
+          </TypographyP>
+          <TypographyP className="font-mono">
+            Engineered with Google ADK, LiteLLM (Groq Llama 3.3 70B), Exa Search, FastAPI, and Redis to
+            research topics, author coding challenges, update live leaderboards, and summarize intern commit history.
+          </TypographyP>
+          <ProjectsLinks repo={this.github} />
         </div>
       );
     },
@@ -454,40 +874,82 @@ const projects: Project[] = [
     category: "AI Farming Assistant",
     title: "GheitBot",
     src: "/assets/projects-screenshots/gheitbot/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
     screenshots: ["landing.png"],
     skills: {
-      frontend: [
-        PROJECT_SKILLS.streamlit,
-        PROJECT_SKILLS.python,
-      ],
-      backend: [
-        PROJECT_SKILLS.python,
-      ],
+      frontend: [PROJECT_SKILLS.streamlit, PROJECT_SKILLS.python],
+      backend: [PROJECT_SKILLS.python],
     },
-    github: "https://github.com/karimcpp110/GheitBot",
-    problem: "Traditional farming in Egypt lacks real-time data on micro-climates and crop disease risk.",
-    solution: "Developed an AI assistant integrating satellite weather and soil data for precision farming advice.",
+    github: "https://github.com/karim-wael/GheitBot",
+    shortDescription:
+      "Arabic Streamlit precision farming assistant for Egyptian farmers integrating OpenWeather data, Folium maps, CSV crop datasets, and RSS/web news.",
+    problem:
+      "Farmers in Egypt benefit from localized Arabic interfaces combining governorate weather lookups, crop CSV references, and regional agricultural news.",
+    solution:
+      "Built an Arabic Streamlit app (`app.py`) combining fuzzy place matching (`difflib.get_close_matches`), `egypt_places.csv` and `crops_egypt.csv`, OpenWeather lookups, Folium maps, and RSS/BeautifulSoup news feeds.",
+    architectureDesc:
+      "Governorate Query -> CSV Lookup (crops_egypt.csv & egypt_places.csv) + OpenWeather & RSS Feeds -> Streamlit + Folium Map + Plotly UI.",
+    contribution:
+      "Repository author (`karim-wael/GheitBot`) developing the Streamlit app, CSV data lookups, and Folium/Plotly integration.",
+    implementationDesc:
+      "Implemented in Python + Streamlit (`app.py`) with Pandas, `streamlit-folium`, `feedparser`, `beautifulsoup4`, `plotly`, and `requests` (`requirements.txt`).",
+    limitations:
+      "Uses fuzzy string matching + static CSV crop tables and OpenWeather queries rather than trained ML models (`scikit-learn` is not used); requires configuring `OPENWEATHER_API_KEY` at runtime.",
+    impact:
+      "Published an open-source Arabic agricultural assistant prototype tailored to Egyptian locations and crop calendars.",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            AI-Powered Precision Farming for Egypt
+            Arabic Farming Utility for Egypt (`GheitBot`)
           </TypographyP>
           <TypographyP className="font-mono">
-            GheitBot is an AI assistant tailored for Egyptian farmers, providing
-            real-time agricultural intelligence. It integrates OpenWeather API,
-            scrapes localized agricultural data, and uses ML-based models (Pandas)
-            to provide crop recommendations and irrigation schedules via a
-            premium Streamlit interface.
+            GheitBot (`karim-wael/GheitBot`) integrates OpenWeather API queries, Egyptian crop/location
+            CSVs (`crops_egypt.csv`, `egypt_places.csv`), RSS/BeautifulSoup feeds, Plotly charts, and Folium
+            maps inside an Arabic Streamlit app.
           </TypographyP>
           <ProjectsLinks repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Technical Stack</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">Streamlit + Pandas for data analysis and UI</li>
-            <li className="font-mono">BeautifulSoup for localized web scraping</li>
-            <li className="font-mono">Folium for geospatial mapping of farm health</li>
-            <li className="font-mono">OpenWeather API integration for precise micro-climate alerts</li>
-          </ul>
+        </div>
+      );
+    },
+  },
+  {
+    id: "coding-arena",
+    category: "Gamified Education",
+    title: "Coding Arena (IEEE Booth)",
+    src: "/assets/projects-screenshots/coding-arena/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [PROJECT_SKILLS.js],
+      backend: [],
+    },
+    live: "",
+    shortDescription:
+      "Browser-based competitive coding booth activity featuring C++ and Python 1v1 challenges, score tracking, and particle canvas visuals.",
+    problem:
+      "Campus engineering booths need interactive, high-energy technical experiences to attract and engage student programmers.",
+    solution:
+      "Built a standalone browser-based Coding Arena featuring 1v1 Code Duels, Championship brackets, XP/level badges, and particle canvas effects.",
+    contribution:
+      "Created the standalone interactive booth front-end experience for IEEE MIU campus events.",
+    limitations:
+      "Standalone front-end booth tool with no public GitHub repository link.",
+    impact:
+      "Supported interactive campus IEEE booth engagement with gamified C++/Python challenges.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Learn. Compete. Code. — Interactive IEEE Booth Arena
+          </TypographyP>
+          <TypographyP className="font-mono">
+            A futuristic browser-based competitive programming platform built for IEEE MIU booth challenges,
+            featuring 1v1 C++/Python duels, live leaderboards, achievements, and XP leveling.
+          </TypographyP>
+          <ProjectsLinks />
         </div>
       );
     },
@@ -497,119 +959,168 @@ const projects: Project[] = [
     category: "Leadership & Education",
     title: "SmartGen Championship 2026",
     src: "/assets/projects-screenshots/smartgen/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Leadership Overview Card (Not an Application Screenshot)",
     screenshots: ["landing.png"],
     skills: {
       frontend: [PROJECT_SKILLS.arduino, PROJECT_SKILLS.cpp, PROJECT_SKILLS.python],
       backend: [],
     },
     live: "",
-    shortDescription: "Participation Manager, TA Lead, Mentor, and Instructor for an intensive Robotics & AI competition.",
-    problem: "High-school students need practical, hands-on experience bridging academic learning with real-world robotics and AI applications.",
-    solution: "Organized and executed a comprehensive robotics championship, mentoring students from ideation to fully functioning projects.",
+    shortDescription:
+      "Participation Manager, TA Lead, Mentor, and Instructor for a multi-school high-school Robotics & AI championship.",
+    problem:
+      "High-school students rarely get structured, hands-on exposure connecting Arduino hardware, embedded C++, and AI problem solving.",
+    solution:
+      "Coordinated participant operations across 10 schools (30+ students), developed hands-on robotics workshops, and led TA lab mentorship from foundational electronics to live competition.",
+    contribution:
+      "Served as Participation Manager, TA Lead, Mentor, and Instructor representing Computer Science outreach alongside Zeiad Abo Gebba.",
+    limitations:
+      "Organizational, curriculum, and mentorship program documented in IEEE MIU knowledge base rather than a standalone software repository; participant counts are self-reported branch metrics.",
+    impact:
+      "Guided 30+ high-school participants across 10 schools through 20+ hours of embedded C++, Arduino, and Python training.",
     get content() {
       return (
         <div className="space-y-4 pb-10">
           <TypographyP className="font-mono text-2xl text-center">
-            🙏 A Massive Thank-You to an Extraordinary Team 🙏
+            SmartGen Championship 2026 — Robotics &amp; AI Education Leadership
           </TypographyP>
           <TypographyP className="font-mono">
-            Looking back at SmartGen Championship 2026, I can confidently say it was one of the most rewarding and inspiring experiences I’ve ever been part of.
+            Served as Participation Manager, TA Lead, Mentor, and Instructor during SmartGen Championship 2026,
+            representing the Computer Science faculty on school tours alongside Zeiad Abo Gebba and guiding
+            grades 10–12 teams from foundational Arduino &amp; Python training to live robotics finals.
           </TypographyP>
-          <TypographyP className="font-mono">
-            This intensive Robotics &amp; AI competition brought together passionate high-school students from grades 10 to 12, dedicated mentors, hardworking organizers, talented media teams, and an incredible faculty community — all united by innovation, collaboration, creativity, and the drive to build something impactful.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            Throughout this journey, I had the honor of serving as a Participation Manager, TA Lead, Mentor, and Instructor, where I was responsible for coordinating participant engagement, managing logistics and communication, mentoring students, supporting teams throughout the competition, and helping ensure the smooth execution of the entire event.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            Beyond the operational side, one of the most meaningful parts of the experience was being directly involved with students on both the technical and educational levels. I actively taught and explained robotics, AI, and programming concepts, guided students through technical challenges, followed up with teams and their projects, assisted them during development, and helped participants transform their ideas into real working solutions.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            Watching students go from uncertainty to confidence, and from simple ideas to fully functioning projects, was honestly one of the most rewarding parts of the entire experience.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            One of the highlights of this journey was participating in the school tours, where Zeiad Abo Gebba and I proudly represented the Computer Science faculty. During these visits, we introduced students to robotics, AI, programming, and the opportunities available within the CS field, while encouraging them to explore technology and innovation with confidence.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            Seeing students become excited about learning, building projects, and exploring the world of technology reminded us why initiatives like SmartGen truly matter.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            Inside the labs and throughout the competition days, the atmosphere was incredible. Every team brought creativity, determination, and passion to the event. Seeing students collaborate under pressure, solve real technical problems, and continuously improve their projects made every challenge worth it.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            This experience was much bigger than just organizing a competition — it was about creating an environment where students felt motivated to learn, innovate, collaborate, and believe in their abilities.
-          </TypographyP>
-
-          <TypographyH3 className="my-4 mt-8">🌟 Special Thanks</TypographyH3>
-
-          <TypographyP className="font-mono font-bold mt-4 text-primary">🎓 Yassin Shendy</TypographyP>
-          <TypographyP className="font-mono">
-            Thank you for your leadership, trust, and continuous support throughout the competition. Your vision and belief in the team motivated all of us to push harder and deliver something truly meaningful.
-          </TypographyP>
-
-          <TypographyP className="font-mono font-bold mt-4 text-primary">🩺 The Doctors</TypographyP>
-          <TypographyP className="font-mono">
-            To all the doctors who attended, mentored, and judged the projects — thank you for sharing your expertise and helping bridge the gap between academic learning and real-world application. Your support and feedback elevated the quality of the competition and gave students an unforgettable learning experience.
-          </TypographyP>
-
-          <TypographyP className="font-mono font-bold mt-4 text-primary">👩‍🏫 TA Head &amp; TA Team</TypographyP>
-          <TypographyP className="font-mono">
-            A huge shout-out to Zeiad Abo Gebba for leading the TA team with dedication, professionalism, and nonstop effort throughout the competition.
-            <br/><br/>
-            And to every TA who prepared labs, answered questions, supported participants, solved problems, and worked tirelessly behind the scenes — thank you for being one of the strongest pillars of SmartGen 2026. Your patience, teamwork, energy, and commitment created an encouraging environment for every participant.
-          </TypographyP>
-
-          <TypographyP className="font-mono font-bold mt-4 text-primary">🏛️ Faculty &amp; Advisors</TypographyP>
-          <TypographyP className="font-mono">
-            Dr. Ayman Nabeel — thank you for attending, judging projects, and continuously supporting innovation, interdisciplinary learning, and student activities.
-            <br/><br/>
-            Khaled Hussin — your feedback and encouragement pushed students to think bigger, improve their work, and aim for higher-quality solutions.
-            <br/><br/>
-            Dr. Mehaseb Ahmed — thank you for your mentorship, guidance, and continuous support throughout the competition journey.
-            <br/><br/>
-            Ibrahim Lotfy — your effort, support, and contribution to the organization and smooth execution of the event were truly appreciated.
-          </TypographyP>
-
-          <TypographyP className="font-mono font-bold mt-4 text-primary">🎥 Media Team</TypographyP>
-          <TypographyP className="font-mono">
-            Special thanks to Farah Ahmed for leading the media coverage professionally and ensuring every important moment of SmartGen 2026 was captured perfectly.
-            <br/><br/>
-            And to the entire media team — thank you for your creativity, filming, editing, photography, coverage, and nonstop energy throughout the event. Your efforts helped showcase the spirit, hard work, and success of the championship to the entire community.
-          </TypographyP>
-
-          <TypographyP className="font-mono font-bold mt-4 text-primary">🤝 Misr International University &amp; IEEE MIU</TypographyP>
-          <TypographyP className="font-mono">
-            Thank you for providing the environment, resources, and support that made SmartGen Championship 2026 possible.
-            <br/><br/>
-            And to IEEE MIU — I’m truly grateful for the trust you placed in me as Participation Manager, TA Lead, Mentor, and Instructor. It was an honor to contribute to an event that empowered students to explore robotics, AI, teamwork, leadership, and innovation in such a meaningful way.
-          </TypographyP>
-
-          <TypographyH3 className="my-4 mt-8">📊 Highlights I’m Proud Of</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Key Operational &amp; Teaching Outcomes</TypographyH3>
           <ul className="list-disc ml-6 space-y-2">
-            <li className="font-mono">Coordinated participant engagement, logistics, communication, and overall workflow throughout the competition lifecycle.</li>
-            <li className="font-mono">Served as a mentor and instructor during SmartGen Championship 2026, teaching and explaining robotics, AI, and technical concepts to participating students.</li>
-            <li className="font-mono">Guided teams through technical challenges and helped transform ideas into real working projects.</li>
-            <li className="font-mono">Followed up closely with participating teams to ensure continuous progress, collaboration, and effective project execution.</li>
-            <li className="font-mono">Represented the Computer Science faculty during school tours alongside Zeiad Abo Gebba, introducing students to robotics, AI, programming, and the SmartGen experience.</li>
-            <li className="font-mono">Helped create a supportive and motivating environment where students could confidently learn, innovate, collaborate, and compete.</li>
-            <li className="font-mono">Contributed to building an organized workflow between technical, logistics, mentoring, and media teams to ensure smooth event execution.</li>
+            <li className="font-mono">Coordinated participant engagement, communication, and lab schedules for 30+ students across 10 schools</li>
+            <li className="font-mono">Delivered 20+ hours of embedded C++, Arduino sensor interfacing, and Python instruction</li>
+            <li className="font-mono">Aligned technical, TA, logistics, and media teams throughout competition days</li>
           </ul>
-
-          <TypographyH3 className="my-4 mt-8">🚀 Looking Forward</TypographyH3>
-          <TypographyP className="font-mono">
-            This experience reinforced something important: impactful events are never built by individuals alone — they are built by teams driven by passion, trust, collaboration, and a shared purpose.
+        </div>
+      );
+    },
+  },
+  {
+    id: "hoodie-viewer",
+    category: "3D Web Graphics",
+    title: "3D Hoodie Viewer",
+    src: "/assets/projects-screenshots/hoodie-viewer/landing.png",
+    visualType: "conceptual-preview",
+    visualLabel: "Conceptual 3D Mockup Artwork (Not a Live Browser Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.threejs, PROJECT_SKILLS.tailwind],
+      backend: [],
+    },
+    live: "",
+    shortDescription:
+      "Interactive 3D hoodie model (`hoodie.glb`) and WebGL apparel preview experiment built for IEEE apparel branding.",
+    problem:
+      "Static 2D apparel mockups fail to convey garment geometry and multi-angle product details.",
+    solution:
+      "Prepared a custom GLTF/GLB 3D garment asset (`hoodie.glb`) and textures for browser-based Three.js inspection and colorway previewing.",
+    contribution:
+      "Created the local 3D asset files (`design iee/hoodie.glb`, textures, and design mockups).",
+    limitations:
+      "Local workspace contains the `.glb` 3D model, SVG/PNG graphics, and mockup assets (`me/projects/design iee/`) rather than a standalone React Three Fiber codebase or public GitHub repository.",
+    impact:
+      "Produced custom 3D apparel assets (`hoodie.glb`) supporting interactive IEEE merch visualization experiments.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Real-Time WebGL 3D Product Mockup Viewer
           </TypographyP>
           <TypographyP className="font-mono">
-            I’m incredibly proud of everything we achieved together, and I’m excited for what’s next. I hope we continue creating opportunities that empower students, encourage innovation, strengthen leadership, and connect education with real-world technology and problem-solving.
+            An interactive Three.js / React-three-fiber visualization tool enabling smooth 360-degree inspection
+            and real-time colorway customization in the browser.
+          </TypographyP>
+          <ProjectsLinks />
+        </div>
+      );
+    },
+  },
+  {
+    id: "pet-care-pro",
+    category: "Desktop Systems",
+    title: "Pet Care Pro (JavaFX)",
+    src: "/assets/projects-screenshots/pet-care-pro/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [PROJECT_SKILLS.java],
+      backend: [PROJECT_SKILLS.java],
+    },
+    live: "",
+    shortDescription:
+      "Multi-role JavaFX 21 desktop veterinary and pet care management suite with Admin, Vet, Pet Owner, and Trainer dashboards.",
+    problem:
+      "Multi-role veterinary clinics need distinct operational views for veterinarians, trainers, administrators, and pet owners with local persistence.",
+    solution:
+      "Built a JavaFX 21 desktop application with polymorphic role dashboards (`Admin`, `Veterinarian`, `PetOwner`, `Trainer`), seeded sample data, and a background daemon auto-save thread.",
+    contribution:
+      "Coursework/desktop OOP engineering application implementing role dashboards and Java serialization persistence.",
+    limitations:
+      "Academic JavaFX desktop project stored locally without an active public GitHub repository or automated test suite.",
+    impact:
+      "Applied OOP inheritance, role dispatch, and non-blocking JavaFX daemon persistence.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Multi-Role Veterinary Clinic Desktop Suite (JavaFX 21)
           </TypographyP>
           <TypographyP className="font-mono">
-            Thank you again to everyone who contributed to making SmartGen Championship 2026 such a memorable and impactful experience.
-            <br/><br/>
-            Together, you set a great example of teamwork, mentorship, dedication, leadership, and excellence. 🌟
+            Built with JavaFX 21 featuring separate role-specific dashboards for Admins, Veterinarians, Pet
+            Owners, and Trainers, backed by a centralized DataManager and 30-second background daemon auto-saving.
           </TypographyP>
+          <ProjectsLinks />
+        </div>
+      );
+    },
+  },
+  {
+    id: "travel-agency",
+    category: "OOP Architecture",
+    title: "Travel Agency System",
+    src: "/assets/projects-screenshots/travel-agency/landing.png",
+    visualType: "architecture-illustration",
+    visualLabel: "Illustrative Architecture Graphic (Generated Card — Not a Live Screenshot)",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [PROJECT_SKILLS.java],
+      backend: [PROJECT_SKILLS.java],
+    },
+    live: "",
+    github: "https://github.com/karim-wael/Travel-agency-",
+    shortDescription:
+      "Solo Java CRUD management platform with Swing GUI + console interfaces, automated tax/discount math, and binary object serialization.",
+    problem:
+      "Managing multi-tier travel bookings, customer pricing rules, and session persistence without external database servers.",
+    solution:
+      "Built a dual-interface Java Swing and console application applying core OOP principles with automated pricing calculations and `.ser` object persistence.",
+    contribution:
+      "Solo author (`karim-wael/Travel-agency-`) implementing OOP domain classes, Swing views, and binary serialization.",
+    limitations:
+      "Early undergraduate OOP project using Java `.ser` file serialization rather than a relational database.",
+    impact:
+      "Published public Java OOP repository demonstrating Swing + console interfaces and stateful `.ser` persistence.",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            100% Solo Java OOP &amp; Swing Management System
+          </TypographyP>
+          <TypographyP className="font-mono">
+            A complete Java CRUD platform featuring both a Swing desktop GUI and console interface, automated
+            pricing/tax/discount calculations, and Java object serialization.
+          </TypographyP>
+          <ProjectsLinks repo={this.github} />
         </div>
       );
     },
   },
 ];
+
 export default projects;

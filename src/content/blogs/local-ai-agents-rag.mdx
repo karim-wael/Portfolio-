@@ -1,27 +1,23 @@
 ---
-title: "Local AI Agents: Designing Secure Offline RAG Architectures"
+title: "Local AI Workspaces: Running Offline LLMs with Ollama and Open WebUI"
 publishedAt: "2026-04-05"
-summary: "How to construct a fully offline Retrieval-Augmented Generation pipeline using Ollama and FAISS without exposing codebase tokens."
+summary: "How Chiggabot provisions quantized Ollama models and a containerized Open WebUI workspace for offline local AI workflows without cloud token egress."
 author: "Karim Wael"
-tags: ["ai-agents", "rag", "security"]
+tags: ["ai-agents", "ollama", "docker"]
 ---
 
-# Local AI Agents: Designing Secure Offline RAG Architectures
+# Local AI Workspaces: Running Offline LLMs with Ollama and Open WebUI
 
-Enterprise software houses often avoid third-party LLM integrations due to codebase privacy rules. Passing entire files through public cloud interfaces poses severe security risks. Building local, offline AI agents solves this problem.
+Developers frequently avoid third-party cloud LLM APIs when reviewing internal notes or private repositories due to privacy constraints and recurring API costs. Running open-weight quantized models locally solves this without external data egress.
 
-## System Architecture
+## Setup Kit Architecture
 
-Our off-grid agent runtime, **Chiggabot**, relies on a private retrieval loop running entirely on local CPU/GPU hardware:
+**Chiggabot** (`Chiggabot_Setup_Kit`) is a practical Windows provisioning kit (`launch_agent.bat`, `download_models.ps1`, and `create_shortcut.ps1`) built to automate local LLM setup rather than maintaining a custom vector-store codebase:
 
+```text
+[launch_agent.bat] -> [Ollama Local Server :11434] + [Docker Open WebUI :8081] -> [Edge App Mode]
 ```
-[User Query] -> [MiniLM Embeddings] -> [Vector Index (FAISS)] -> [Ollama Local LLM] -> [Output]
-```
 
-1. **Local Embeddings**: Incoming codebase chunks are parsed and vectorized using lightweight sentence transformers.
-2. **Offline Vector Search**: Similarity lookups query local vector stores (Chroma/FAISS) to fetch relevant code context.
-3. **Local LLM Inference**: Context is injected into Ollama-hosted models (e.g., Llama3, Mistral) to synthesize responses securely.
-
-## Execution Isolation
-
-A major feature of Chiggabot is its local script executor. To prevent prompt injection exploits from running arbitrary system shell commands, the runtime parses model suggestions and forwards execution logic to isolated Docker containers. Networking is explicitly disabled on these sandbox runtimes, preventing credentials exfiltration.
+1. **Automated Model Provisioning (`download_models.ps1`)**: Pulls eight quantized local models (`tinyllama`, `phi3:mini`, `deepseek-r1:1.5b/14b`, `qwen2.5-coder:1.5b/14b`, `dolphin-llama3:8b`, and `llava:v1.6-7b`).
+2. **Containerized Open WebUI (`docker`)**: Launches the Open WebUI container bound to port `8081` and connected via `host.docker.internal` to the local Ollama runtime, leveraging Open WebUI's built-in document Q&A capabilities offline.
+3. **Zero Cloud Egress**: All prompts and uploaded files remain on local hardware (`localhost:8081`), eliminating third-party API exposure.

@@ -1,22 +1,17 @@
 import { MetadataRoute } from "next";
+import projects from "@/data/projects";
+import { getBlogPosts } from "@/lib/mdx";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://karim-wael.vercel.app";
 
-  const mainRoutes = [
-    "",
-    "/blogs",
-    "/work/talky",
-    "/work/chiggabot",
-    "/work/soc-ai",
-    "/work/ieee-portal",
-    "/blogs/building-soc-ai-omega",
-    "/blogs/local-ai-agents-rag",
-    "/blogs/nasa-space-apps-experience",
-    "/blogs/reverse-engineering-portals",
-  ];
+  const staticRoutes = ["", "/projects", "/blogs"];
+  const projectRoutes = projects.map((p) => `/work/${p.id}`);
+  const blogRoutes = getBlogPosts().map((post) => `/blogs/${post.slug}`);
 
-  return mainRoutes.map((route) => ({
+  const allRoutes = [...staticRoutes, ...projectRoutes, ...blogRoutes];
+
+  return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: "weekly",

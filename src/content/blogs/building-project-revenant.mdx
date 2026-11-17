@@ -1,0 +1,25 @@
+---
+title: "Project Revenant: Designing an Out-of-Band Self-Healing Endpoint Defense"
+publishedAt: "2026-10-28"
+summary: "Co-engineering a decoupled .NET 8, mTLS, Ed25519, ONNX, and write-only vault prototype validated on a single-laptop loopback sandbox."
+author: "Karim Wael"
+tags: ["cybersecurity", "dotnet8", "onnx", "fastapi"]
+---
+
+# Project Revenant: Designing an Out-of-Band Self-Healing Endpoint Defense
+
+Modern ransomware families routinely wipe local Windows Volume Shadow Copies (`vssadmin delete shadows`) before encrypting user files. If an endpoint defense prototype stores its backups or decision authority on the same compromised machine, recovery fails once an attacker elevates privilege.
+
+## Asymmetric Two-Plane Architecture
+
+Built as a collaborative Software Engineering project at Misr International University (to which Karim Wael made multiple engineering contributions alongside teammate Motrk12), **Project Revenant** separates endpoint telemetry from recovery authority:
+
+- **Protected Windows PC (`.NET 8` Worker Service)**: Captures file modifications (`FileSystemWatcher`), WMI process lifecycles, and network flow features, streaming telemetry over **Mutual TLS (mTLS)** and verifying **Ed25519-signed** commands (`SignedCommandVerifier.cs` via BouncyCastle).
+- **Management Authority (FastAPI + ONNX + PostgreSQL/SQLite)**: Runs three real-dataset ONNX models (LightGBM on `EMBER2024`, PyTorch GRU on `RanSAP`, and LightGBM on `CIC-IDS2017`), enforces a reversible-vs-destructive response policy (`semi_auto` holds `delete` for human approval), and records a SHA-256 hash-chained audit log.
+- **Write-Only Backup Vault (`revenant_vault`)**: Isolates bearer roles so the endpoint agent token can `POST /v1/versions` pre-change files but receives `403 Forbidden` on list, read, and delete endpoints.
+
+## Sandbox Validation & Documented Limitations
+
+Across **10 consecutive runs on an automated single-laptop loopback test harness** (`make e2e` with a simulated high-entropy encryptor encrypting 8 files per run, `SandboxMode = true` in `CommandExecutor.cs`), the harness measured a **0.476s median recovery time** (mean `0.483s`), **80/80** byte-identical SHA-256 file restorations, and **110/110** verified audit hash-chain entries. Backend and vault unit suites (`pytest`) also pass (`213 passed`).
+
+Because the `make e2e` harness ran on loopback with a Python harness substituting for the `.NET 8` agent's polling loop—and with the operator console appliance-style redesign listed as planned/not-started in `docs/planned-features.md`—those figures represent controlled prototype validation rather than production two-machine LAN telemetry.

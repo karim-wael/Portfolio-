@@ -7,27 +7,27 @@ import { motion } from "framer-motion";
 const categories = [
   {
     title: "Programming",
-    skills: ["Python", "C++", "JavaScript", "TypeScript", "Java", "Arduino (C++)"],
+    skills: ["Python", "C++", "C# (.NET 8)", "TypeScript", "JavaScript", "PHP 8.2", "Java", "SQL"],
   },
   {
-    title: "AI & Machine Learning",
-    skills: ["Machine Learning", "Deep Learning", "RAG", "LLMs", "AI Agents", "Scikit-learn"],
+    title: "AI, RAG & Computer Vision",
+    skills: ["PyTorch", "LightGBM", "ONNX Runtime", "Scikit-Learn", "Google ADK", "Ollama", "pgvector", "YOLOv8 / OpenCV"],
   },
   {
-    title: "Cybersecurity",
-    skills: ["MITRE ATT&CK", "Sigma Rules", "Wazuh", "Linux Security", "Network Forensics"],
+    title: "Cybersecurity & Crypto",
+    skills: ["Mutual TLS (mTLS)", "Ed25519 Signatures", "MITRE ATT&CK", "Sigma YAML", "Wazuh", "Linux Security", "RBAC"],
   },
   {
-    title: "Frontend",
-    skills: ["React", "Next.js", "Three.js", "Tailwind CSS", "Framer Motion"],
+    title: "Frontend & Interactive",
+    skills: ["Next.js 14/15", "React 18/19", "Three.js", "Tailwind CSS", "Alpine.js", "Framer Motion", "Leaflet / Chart.js"],
   },
   {
     title: "Backend & Systems",
-    skills: ["FastAPI", "Node.js", "Express", "Socket.io", "WebSocket Protocol", "REST APIs"],
+    skills: ["FastAPI", "Laravel 11", "Laravel Reverb", "Node.js", "C++ WebSockets", "SQLAlchemy", "REST APIs"],
   },
   {
-    title: "DevOps & Infrastructure",
-    skills: ["Docker", "AWS", "Git & GitHub Workflows", "Linux SysAdmin", "Nginx"],
+    title: "Data, DevOps & Hardware",
+    skills: ["PostgreSQL", "MySQL", "SQLite3", "Redis", "Docker", "AWS", "Filament v3", "Arduino / Embedded C++"],
   },
 ];
 
@@ -51,7 +51,7 @@ export default function TechStackSection() {
         <SectionHeader
           id="tech-stack"
           title="Engineering Toolbelt"
-          desc="Visible technologies catalog representing my full engineering competencies."
+          desc="Technologies verified across production codebases, internships, and NASA Space Apps builds."
           className="mb-16 mt-0"
         />
 

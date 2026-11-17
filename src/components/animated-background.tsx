@@ -142,9 +142,9 @@ const AnimatedBackground = () => {
     gsap.set(kbd.scale, heroState.scale);
     gsap.set(kbd.position, heroState.position);
 
-    // Section transitions (V3 order: Hero -> Projects -> Skills -> Contact)
+    // Section transitions (V3 order: Hero -> Projects -> Tech Stack -> Contact)
     createSectionTimeline("#projects", "projects", "hero", "top 70%");
-    createSectionTimeline("#skills", "skills", "projects", "top 50%");
+    createSectionTimeline("#tech-stack", "skills", "projects", "top 50%");
     createSectionTimeline("#contact", "contact", "skills", "top 30%");
   };
 

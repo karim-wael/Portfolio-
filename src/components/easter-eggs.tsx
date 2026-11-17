@@ -30,15 +30,15 @@ const EasterEggs = () => {
         "color: #FFD700; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px;"
       );
 
-      ["naresh", "Naresh", "NARESH"].forEach((name) => {
+      ["karim", "Karim", "KARIM"].forEach((name) => {
         // @ts-ignore
         if (Object.hasOwn(window, name)) return;
         Object.defineProperty(window, name, {
           get() {
             console.log(
-              "%c✨ Abra Kadabra! ✨\n\n" +
-                "You just summoned the magic of Naresh! 🧙‍♂️\n" +
-                "What??? youre not impressed? Fine, but remember: With great power comes great responsibility! 💻⚡",
+              "%c✨ System Override Unlocked! ✨\n\n" +
+                "Welcome to Karim Wael's engineering terminal! 🧙‍♂️\n" +
+                "Explore FLARE AI, Project Revenant, TALKY, and the interactive 3D stack.",
 
               "color: #FF4500; font-size: 18px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:10px"
             );
